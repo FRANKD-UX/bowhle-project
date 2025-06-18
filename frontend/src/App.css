@@ -1,16 +1,38 @@
+:root {
+  /* global variables are a great start */
+  --main-font: montserrat;
+  --main-text-color: #323030;
+  --button-background-color: #f0f0f0;
+  --button-text-color: #323030;
+  --button-hover-background-color: #706e6e;
+  --button-hover-text-color: #ffffff;
+  --button-border-radius: 50px;
+  --button-padding: 5px 20px;
+}
+
+.Hero-Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -24,15 +46,70 @@
   color: white;
 }
 
+.content {
+  color: #ffffff;
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(-2%, 190%);
+  position: relative;
+  z-index: 1;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: var(--main-border-radius);
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  font-size: 16px;
+  font-weight: light;
+  cursor: pointer;
+  border: none;
+}
+
+.button.light {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  text-decoration: none;
+  border-radius: var(--button-border-radius);
+}
+
+.button.light:hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+}
+
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Adjust the layout on different screen sizes */
+
+/* For small screens (mobile devices) */
+@media (max-width: 768px) {
+  .Hero-Container {
+    height: auto;
+    padding: 20px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* For medium screens (tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .Hero-Container {
+    height: 80vh;
+    padding: 40px;
+  }
+}
+
+/* For large screens (desktops) */
+@media (min-width: 1025px) {
+  .Hero-Container {
+    height: 100vh;
+    padding: 0;
   }
 }
