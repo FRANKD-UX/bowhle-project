@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+:root {
+    --main-font: 'Montserrat', sans-serif;
+    --main-text-color: #323030;
+    --section-padding: 80px 0;
+}
+
+.homeIntro {
+    padding: var(--section-padding);
+    text-align: center;
+    font-family: var(--main-font);
+    margin: 5vh;
+}
+
+.intro-content {
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-family: var(--main-font);
+}
+
+.intro h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--main-text-color);
+    font-family: var(--main-font);
+}
+
+.intro p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: var(--main-text-color);
+    font-family: var(--main-font);
+}

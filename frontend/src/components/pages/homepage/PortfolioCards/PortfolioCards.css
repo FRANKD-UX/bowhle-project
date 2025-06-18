@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+:root {
+  --main-font: 'Montserrat', sans-serif;
+  --section-padding: 50px 0;
+  --block-margin: 10px; 
+}
+
+.portfolioCards {
+  padding: var(--section-padding);
+  background-color: #ffffff00;
+  font-family: var(--main-font);
+  margin-top: 5vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; 
+}
+
+.portfolio-blocks {
+  display: grid;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(0, 30%)); /* 3 columns, allow shrinking */
+  gap: var(--block-margin);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+.portfolio-block {
+  height: 500px;
+  width: 100%;
+  max-width: 100%;
+  background-color: #9c9c9c;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Media queries for responsive design */
+
+@media (max-width: 768px) {
+  .portfolio-block {
+    width: calc(80vw - 20px);
+    width: calc(33.33% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-block {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 320px) {
+  .portfolio-block {
+    width: 100%;
+  }
+}

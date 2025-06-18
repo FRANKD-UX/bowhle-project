@@ -2,17 +2,13 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom'; // Imports the React Router routing tools
 
 import './App.css';
-import Header from './components/header/header';
+import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-
-/**
- * The main App component.
- * @returns {React.ReactElement} The JSX element to render.
- * This component renders the main hero section of the page,
- * which includes a background video, a header, a section with a heading
- * and a call-to-action button, a home intro section, and a section
- * with a list of portfolio cards.
- */
+import HomeIntro from './components/pages/homepage/HomeIntro/HomeIntro';
+import PortfolioCards from './components/pages/homepage/PortfolioCards/PortfolioCards';
+import Brands from './components/pages/homepage/Brands/Brands';
+import Testimonials from './components/pages/homepage/Testimonials/Testimonials';
+import About from './components/pages/about/About';
 
 // This is the homepage content only
 function HomePage() {
@@ -30,6 +26,11 @@ function HomePage() {
         <a href="#" className="button light">EXPLORE OUR WORK</a>
       </section>
     </div>
+      <Header />
+      <HomeIntro />
+      <PortfolioCards />
+      <Brands />
+      <Testimonials />
     </>
   );
 }
@@ -39,11 +40,16 @@ function AppWithRoutes() {
   console.log('AppWithRoutes component is being rendered');
   return (
     <>
+    <div className='page-wrapper'>
     <Header />
+    <main className='main-content'>
     <Routes>
       <Route path="/home" element={<HomePage />} />
+      <Route path="/about" element={<About />} />
     </Routes>
+    </main>
     <Footer />
+    </div>
     </>
   );
 }
