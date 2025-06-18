@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'; // Imports the React Router ro
 
 import './App.css';
 import Header from './components/header/header';
+import Footer from './components/Footer/Footer';
 
 /**
  * The main App component.
@@ -42,6 +43,7 @@ function AppWithRoutes() {
     <Routes>
       <Route path="/home" element={<HomePage />} />
     </Routes>
+    <Footer />
     </>
   );
 }
