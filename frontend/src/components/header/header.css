@@ -1,0 +1,129 @@
+.sticky-header {
+  width: 100%;
+  position: fixed; /*  header sticky always */
+  top: 0;
+  left: 0;
+  z-index: 100; /* nice to ensure it stays on top of other content */
+  background-color: rgba(0, 0, 0, 0.8); /* ps background for better visibility for sticky header */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+.navbar {
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
+.logo img {
+  max-height: 60px; /* logo image size here */
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.nav-links li {
+  margin-left: 1.5rem; /* ps spacing between links */
+}
+
+.nav-links a {
+  color: #fff;
+  display: block;
+  position: relative;
+  padding: 10px 0;
+  text-decoration: none;
+}
+
+.nav-links a:before,
+.nav-links a:after {
+  content: "";
+  bottom: -2px;
+  width: 0px;
+  height: 2px;
+  display: block;
+  position: absolute;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links a:before {
+  right: 50%;
+}
+
+.nav-links a:after {
+  left: 50%;
+}
+
+.nav-links a:hover:before,
+.nav-links a:hover:after {
+  width: 50%;
+}
+
+.hamburger-button {
+  display: none; /* Hiding by default on larger screens */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.hamburger-button svg {
+  height: 30px;
+  width: 30px;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 768px) {
+  .nav-links {
+    display: flex; /* ps where i hide navigation links on smaller screens */
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 86px; /* Adjusting based on header height */
+    right: 0;
+    width: 150px;
+    padding: 30px;
+    border-radius: 5px 0 0 5px;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* Hiding off-screen initially */
+  }
+
+  .nav-links.open {
+    display: flex;
+    transform: translateX(-35%); /* Slide in when open */
+  }
+
+  .nav-links li {
+    margin: 0.7rem 0;
+  }
+
+  .hamburger-button {
+    display: block; /* ps hamburger button on smaller screens */
+    padding: 0 80px;
+  }
+
+  .logo {
+    font-size: 1.8em; /* ps logo size for mobile */
+  }
+}
