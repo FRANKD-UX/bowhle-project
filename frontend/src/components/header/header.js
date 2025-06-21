@@ -15,9 +15,37 @@ function Header() {
     /* Header */
     <header className="sticky-header">
       <nav className="navbar">
+        <div className='nav-left'>
         <div className="logo">
           <img src={logoImage} alt="Bowhle Logo" />
         </div>
+        </div>
+
+        {/* Navigation Links */}
+        <div className='nav-center'>
+        <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+          <li><Link to="/home" style={{ '--i': 0 }} onClick={toggleMenu}>Home</Link></li>
+          <li><Link to="/about" style={{ '--i': 1 }} onClick={toggleMenu}>About</Link></li>
+          <li><Link to="/services" style={{ '--i': 2 }} onClick={toggleMenu}>Services</Link></li>
+          <li><Link to="/portfolio" style={{ '--i': 3 }} onClick={toggleMenu}>Portfolio</Link></li>
+          <li><Link to="/contact" style={{ '--i': 4 }} onClick={toggleMenu}>Let's Connect</Link></li>
+
+          {/* Auth buttons (mobile only) */}
+          <li className="mobile-auth">
+            <Link to="/login" className="login-button" onClick={toggleMenu}>Login</Link>
+            <Link to="/signup" className="signup-button" onClick={toggleMenu}>Sign Up</Link>
+          </li>
+        </ul>
+        </div>
+
+        {/* Authentication Buttons */}
+        <div className='nav-right'>
+        <div className='auth-buttons'>
+          <Link to="/login" className="login-button">Login</Link>
+          <Link to="/signup" className="signup-button">Sign Up</Link>
+        </div>
+        </div>
+        
         <button className="hamburger-button" onClick={toggleMenu}>
           {/* Hamburger Menu strokes */}
           <svg viewBox="0 0 100 100">
@@ -45,13 +73,6 @@ function Header() {
             </path>
           </svg>
         </button>
-        <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-          <li><Link to="/home" style={{ '--i': 0 }}>Home</Link></li>
-          <li><Link to="/about" style={{ '--i': 1 }}>About</Link></li>
-          <li><Link to="/services" style={{ '--i': 2 }}>Services</Link></li>
-          <li><Link to="/portfolio" style={{ '--i': 3 }}>Portfolio</Link></li>
-          <li><Link to="/contact" style={{ '--i': 4 }}>Let's Connect</Link></li>
-        </ul>
       </nav>
     </header>
   );

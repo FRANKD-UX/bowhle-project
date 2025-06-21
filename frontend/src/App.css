@@ -115,36 +115,36 @@ html, body, #root {
 
 /* For small screens (mobile devices) */
 @media (max-width: 768px) {
-  .hero-container,
-  .background-video,
-  .background-video video {
-    width: 100vw;
-    height: 100vh;
-    min-width: 100vw;
-    min-height: 100vh;
-    padding: 1.5rem 1rem;
+.hero-container,
+.background-video,
+.background-video video {
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 1.5rem 1rem;
   }
 
 .content {
-    padding: 3rem 1rem;
-    font-size: 1.8rem;
+  padding: 3rem 1rem;
+  font-size: 1.8rem;
   }
 }
 
 /* For medium screens (tablets) */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .hero-Container {
-    min-height: 80vh;
-    padding: 40px;
-    align-items: center;
+.hero-Container {
+  min-height: 80vh;
+  padding: 40px;
+  align-items: center;
   }
 }
 
 /* For large screens (desktops) */
 @media (min-width: 1025px) {
-  .hero-Container {
-    min-height: 100vh;
-    padding: 0;
-    align-items: center;
+.hero-Container {
+  min-height: 100vh;
+  padding: 0;
+  align-items: center;
   }
 }
