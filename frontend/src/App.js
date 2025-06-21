@@ -53,9 +53,10 @@ function AppWithRoutes() {
 
     <main className='main-content'>
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/about" element={<About />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
     </main>
 
