@@ -9,6 +9,8 @@ import PortfolioCards from './components/pages/homepage/PortfolioCards/Portfolio
 import Brands from './components/pages/homepage/Brands/Brands';
 import Testimonials from './components/pages/homepage/Testimonials/Testimonials';
 import About from './components/pages/about/About';
+import Login from './components/auth/Login';
+
 
 // This is the homepage content only
 function HomePage() {
@@ -44,6 +46,7 @@ function AppWithRoutes() {
     <Header />
     <main className='main-content'>
     <Routes>
+      <Route path="/login" element={<Login />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/about" element={<About />} />
     </Routes>
