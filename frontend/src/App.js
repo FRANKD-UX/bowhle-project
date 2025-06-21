@@ -53,7 +53,7 @@ function AppWithRoutes() {
 
     <main className='main-content'>
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<Navigate to="/home" replace />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/about" element={<About />} />
       <Route path="/login" element={<Login />} />
