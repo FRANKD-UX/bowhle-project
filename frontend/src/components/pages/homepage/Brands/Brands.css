@@ -1,7 +1,8 @@
 .brands {
   overflow: hidden;
-  background-color: #fff;
-  padding: 60px 20px;
+  background-color: #ffffff;
+  color: black;
+  padding: 80px 0px 100px;
   font-family: var(--main-font);
 }
 

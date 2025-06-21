@@ -164,11 +164,22 @@
 }
 
 .signup-button {
-  background-color: #fff;
-  color: #000000;
+  background-color: #7f2cdd;
+  color: #ffffff;
   text-decoration: none;
   border: none;
+  padding-left: 25px;
+  padding-right: 25px;
 }
+
+.signup-button:hover {
+  background-color: #55238f;
+}
+
+.login-button:hover {
+  color: #874cca;
+}
+
 
 .auth-link {
   color: white;
@@ -244,5 +255,10 @@
   padding: 6px 14px;
   border: none;
   border-radius: 5px;
+  }
+
+  .signup-button {
+    padding-left: 25px;
+    padding-right: 25px;
   }
 }

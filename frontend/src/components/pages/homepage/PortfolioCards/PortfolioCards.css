@@ -8,7 +8,7 @@
 
 .portfolioCards {
   padding: var(--section-padding);
-  background-color: #ffffff00;
+  background-color: #fff;
   font-family: var(--main-font);
   margin-top: 5vh;
   width: 100%;
