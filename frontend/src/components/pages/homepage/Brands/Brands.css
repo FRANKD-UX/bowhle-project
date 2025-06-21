@@ -1,93 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-
-:root {
-  --main-font: 'Montserrat', sans-serif;
-  --main-text-color: #323030;
-  --section-padding: 80px 0;
-}
-
 .brands {
-  max-width: 100%;
-  margin: 5vh;
-  padding: 20px;
-  box-shadow: 0 0 10px #0e0d0d1a;
-  background-color: #ffffff; 
+  overflow: hidden;
+  background-color: #fff;
+  padding: 60px 20px;
+  font-family: var(--main-font);
 }
 
 .brands-intro {
-  max-width: 80%;
   text-align: center;
-  margin: 10vh auto;
-  line-height: 1.7;
-  font-family: var(--main-font);
+  max-width: 800px;
+  margin: 0 auto 40px;
 }
 
-.brands-intro h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: var(--main-text-color);
-  font-family: var(--main-font);
-}
-
-.brands-intro p {
-  font-size: 1.1em;
-  line-height: 1.7;
-  color: var(--main-text-color);
-  font-family: var(--main-font);
-}
-
-.brands-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  grid-template-rows: repeat(2, auto);
-  gap: 10px;
-  max-width: 20px;
-  margin: 0 auto;
-}
-
-.brand-block {
-  /* Each brand block styling */
-  background-color: #ddd;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  height: 80px;
-}
-
-.brands-grid .brand-row-1,
-.brands-grid .brand-row-2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+.brands-slider {
+  overflow: hidden;
+  position: relative;
   width: 100%;
-  max-width: 80px;
 }
 
-.brands-grid img {
-  height: 65px;
+.brands-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 30s linear infinite;
+}
+
+.brand-slide {
+  flex: 0 0 auto;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-slide img {
+  height: 60px;
   width: auto;
+  max-width: 120px;
   object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-/* Adjust the layout on different screen sizes */
-@media (max-width: 1024px) {
-  .brands-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+.brand-slide img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
+/* Responsive Tweaks */
 @media (max-width: 768px) {
-  .brands-grid {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  .brand-slide {
+    padding: 0 15px;
+  }
+
+  .brand-slide img {
+    height: 50px;
   }
 }
 
 @media (max-width: 480px) {
-  .brands-grid {
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  .brand-slide {
+    padding: 0 10px;
+  }
+
+  .brand-slide img {
+    height: 40px;
   }
 }
