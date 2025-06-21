@@ -1,0 +1,33 @@
+.header {
+  height: 100px;
+  background-color: #1C2E36;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  color: #e7e7e7;
+}
+
+.header__search input {
+  border-radius: 50px;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 14px;
+}
+
+.header__search input::placeholder {
+  color: #ccc;
+}
+
+.header__user {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header__date {
+  margin: 0 20px;
+  font-size: 13px;
+  font-weight: 400;
+}

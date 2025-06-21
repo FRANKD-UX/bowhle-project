@@ -11,6 +11,9 @@ import Testimonials from './components/pages/homepage/Testimonials/Testimonials'
 import About from './components/pages/about/About';
 import Login from './components/auth/Login';
 
+import ClientDashboard from './components/dashboard/client/ClientDashboard';
+import EmployeeDashboard from './components/dashboard/employee/EmployeeDashboard';
+
 
 // This is the homepage content only
 function HomePage() {
@@ -54,6 +57,8 @@ function AppWithRoutes() {
       <Route path="/home" element={<HomePage />} />
       <Route path="/about" element={<About />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/client-dashboard" element={<ClientDashboard />} />
+      <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
     </Routes>
     </main>
 

@@ -12,8 +12,8 @@
 
 /* Flex layout for footer positioning */
 html, body, #root {
-  margin: 0;
-  padding: 0;
+  margin-left: 0px;
+  padding-top: 30px;
   height: 100%;
 }
 
