@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; // Imports the React Router routing tools
+import { Routes, Route, useLocation } from 'react-router-dom'; // Imports the React Router routing tools
 
 import './App.css';
 import Header from './components/Header/Header';
@@ -10,6 +10,7 @@ import Brands from './components/pages/homepage/Brands/Brands';
 import Testimonials from './components/pages/homepage/Testimonials/Testimonials';
 import About from './components/pages/about/About';
 import Login from './components/auth/Login';
+import Loader from './components/common/Loader';
 
 
 // This is the homepage content only
@@ -39,11 +40,17 @@ function HomePage() {
 
 // This App handles page routing
 function AppWithRoutes() {
+  // This is a debug log to check if the component is being rendered
+  const location = useLocation();
+  console.log('Current location:', location.pathname);
+  const isLoginPage = location.pathname == '/login';
   console.log('AppWithRoutes component is being rendered');
+  
   return (
     <>
     <div className='page-wrapper'>
-    <Header />
+      {!isLoginPage && <Header />}
+
     <main className='main-content'>
     <Routes>
       <Route path="/login" element={<Login />} />
@@ -51,7 +58,8 @@ function AppWithRoutes() {
       <Route path="/about" element={<About />} />
     </Routes>
     </main>
-    <Footer />
+
+    {isLoginPage && <Footer />}
     </div>
     </>
   );

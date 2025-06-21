@@ -15,7 +15,7 @@ body, html {
 /* WRAPPER SPLIT LAYOUT */
 .login-wrapper {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   overflow: hidden;
 }
@@ -23,7 +23,7 @@ body, html {
 /* LEFT PANEL */
 .login-left {
   flex: 1;
-  background: radial-gradient(circle at top left, #a56ef7, #5a2a94);
+  background: radial-gradient(circle at top left, #DA4453, #16c3cf88, #89216B);
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -103,7 +103,7 @@ body, html {
 
 /* BUTTON */
 .login-form button {
-  background-color: #a56ef7;
+  background-color: #12c3cf;
   color: #fff;
   font-weight: 600;
   border: none;
@@ -114,7 +114,7 @@ body, html {
 }
 
 .login-form button:hover {
-  background-color: #8b4fd1;
+  background-color: #3e169b;
 }
 
 /* SMALL PRINT */
@@ -133,15 +133,16 @@ body, html {
 @media (max-width: 768px) {
   .login-wrapper {
     flex-direction: column;
+
   }
 
   .login-left {
-    height: 300px;
+    height: 600px;
     text-align: center;
     align-items: center;
   }
 
   .login-right {
-    padding: 1.5rem;
+    padding: 8rem;
   }
 }

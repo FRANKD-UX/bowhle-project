@@ -1,7 +1,7 @@
 :root {
   --secondary-color: #6c757d;
   --text-color: #ffffff;
-  --background-color: #094f64;
+  --background-color: #0f86aa;
   --font-family: 'Montserrat', sans-serif;
 }
 
@@ -32,7 +32,7 @@
 
 .testimonial-card {
   background: transparent;
-  backdrop-filter: blur(10px) brightness(60%);
+  backdrop-filter: blur(10px) brightness(90%);
   border-radius: 10px;
   padding: 30px;
   margin: 10px 20px 10px 0;

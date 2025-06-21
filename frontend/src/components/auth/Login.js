@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import Loader from '../common/Loader';
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [userType, setUserType] = useState('client');
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setLoading(true);
     if (userType === 'employee') {
       navigate('/employee-dashboard');
     } else {
       navigate('/client-dashboard');
     }
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="login-wrapper">
