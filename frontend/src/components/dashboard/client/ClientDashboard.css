@@ -1,44 +1,20 @@
-.content__main-sidebar {
-  width: 270px;
-  position: absolute;
-  top: 30px;
-  right: 30px;
+.client-dashboard {
+  background-color: #ffffff;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.box {
-  background-color: white;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.box__line {
+.client-main {
   display: flex;
-  justify-content: space-between;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #e7e7e7;
+  flex-direction: row;
+  padding: 2rem 3rem;
+  gap: 2rem;
 }
 
-.published {
-  background-color: #22C064;
-  padding: 5px 10px;
-  border-radius: 20px;
-  color: white;
-  font-weight: 500;
+.client-projects-section {
+  flex: 1;
 }
 
-.button {
-  width: 100%;
-  padding: 12px;
-  background-color: #1B2327;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  text-transform: uppercase;
-}
-
-.button:hover {
-  background-color: #1C2E36;
+.client-status-sidebar {
+  width: 280px;
 }

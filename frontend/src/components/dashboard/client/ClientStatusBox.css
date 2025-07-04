@@ -1,44 +1,46 @@
-.content__main-sidebar {
-  width: 270px;
-  position: absolute;
-  top: 30px;
-  right: 30px;
+.status-box {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  width: 260px;
 }
 
-.box {
-  background-color: white;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.box__line {
+.status-box .box__line {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #e7e7e7;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.5rem;
 }
 
-.published {
-  background-color: #22C064;
-  padding: 5px 10px;
-  border-radius: 20px;
-  color: white;
+.status-box .box__line h5 {
+  font-weight: 600;
+  margin: 0;
+}
+
+.status-box .box__line a {
+  color: #6e4070;
   font-weight: 500;
+  text-decoration: none;
 }
 
-.button {
-  width: 100%;
-  padding: 12px;
-  background-color: #1B2327;
+.status-box .published {
+  background-color: #22c064;
   color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  text-transform: uppercase;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  border-radius: 20px;
 }
 
-.button:hover {
-  background-color: #1C2E36;
+.status-box .button {
+  width: 100%;
+  background-color: #1b2327;
+  color: white;
+  padding: 10px 0;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
 }

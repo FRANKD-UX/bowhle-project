@@ -1,7 +1,7 @@
 import React from 'react';
 import './ClientHeader.css';
 import logo from '../../../Bowhle-WHITE.png';
-import avatar from 'https://via.placeholder.com/40';
+import avatar from '../../../assets/images/Avatar-1.png';
 
 function ClientHeader() {
   const currentDate = new Date().toLocaleDateString('en-GB');

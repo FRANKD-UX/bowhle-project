@@ -1,33 +1,39 @@
 .header {
-  height: 100px;
-  background-color: #1C2E36;
+  background-color: #4c304f;
+  color: #fff;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30px;
-  color: #e7e7e7;
 }
 
-.header__search input {
-  border-radius: 50px;
-  padding: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: white;
+.header .date {
   font-size: 14px;
 }
 
-.header__search input::placeholder {
-  color: #ccc;
-}
-
-.header__user {
-  font-size: 14px;
+.header .welcome {
+  font-size: 16px;
   font-weight: 500;
 }
 
-.header__date {
-  margin: 0 20px;
-  font-size: 13px;
-  font-weight: 400;
+.header .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 1rem;
+}
+
+.header .cta-button {
+  background-color: #894b90;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.header .cta-button:hover {
+  background-color: #a863aa;
 }
