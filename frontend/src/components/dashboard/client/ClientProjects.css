@@ -2,6 +2,7 @@
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+  color: #1b2327;
 }
 
 .timeline-card, .past-projects-card {
@@ -9,6 +10,7 @@
   border-radius: 20px;
   padding: 2rem;
   margin-bottom: 2rem;
+  color: #1b2327;
 }
 
 .progress-bar {
@@ -39,8 +41,7 @@
 }
 
 .project-gallery .thumbnail {
-  width: 160px;
-  height: 120px;
+  width: 100%;
   overflow: hidden;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);

@@ -1,13 +1,17 @@
 import React from 'react';
 import './ClientProjects.css';
+import project1Img from '../../../assets/images/Project1.png';
+import project2Img from '../../../assets/images/Project2.png';
+import project3Img from '../../../assets/images/Project3.png';
+
+// This component displays the client's current project status and past projects with thumbnails.
+// It includes a progress bar for the current project and a gallery of past project thumbnails.
 
 function ClientProjects() {
   const steps = ["Brief Received", "Design Started", "Design In Review", "Design Completed"];
-  const thumbnails = [
-    'https://via.placeholder.com/160x120',
-    'https://via.placeholder.com/160x120',
-    'https://via.placeholder.com/160x120'
-  ];
+  const thumbnails = [project1Img, project2Img, project3Img];
+  // The steps array represents the stages of the current project.
+  // The thumbnails array contains the image URLs for past projects.
 
   return (
     <div className="client-projects">
@@ -24,9 +28,9 @@ function ClientProjects() {
       <div className="past-projects-card">
         <h4>PAST PROJECTS</h4>
         <div className="project-gallery">
-          {thumbnails.map((url, index) => (
+          {thumbnails.map((img, index) => (
             <div className="thumbnail" key={index}>
-              <img src={url} alt={`Project ${index + 1}`} />
+              <img src={img} alt={`Project ${index + 1}`} />
             </div>
           ))}
         </div>

@@ -12,17 +12,39 @@ function ClientSidebar() {
 
   return (
     <aside className="client-sidebar">
-      <div className="sidebar-logo">BOWHLE</div>
-      <nav className="sidebar-nav">
-        <ul>
-          <li className="active"><i className="fas fa-home"></i> Dashboard</li>
-          <li><i className="fas fa-download"></i> Downloads</li>
-          <li><i className="fas fa-briefcase"></i> Projects</li>
-          <li><i className="fas fa-user"></i> Account</li>
-          <li><i className="fas fa-bell"></i> Notifications</li>
-          <li><i className="fas fa-sign-out-alt"></i> <a href="/" onClick={handleLogout}>Logout</a></li>
+      <div className="sidebar-top">
+        <ul className="nav-links">
+          <li className="active">
+            <i className="fas fa-home"></i>
+            <span>Dashboard</span>
+          </li>
+          <li>
+            <i className="fas fa-download"></i>
+            <span>Downloads</span>
+          </li>
+          <li>
+            <i className="fas fa-briefcase"></i>
+            <span>Projects</span>
+          </li>
         </ul>
-      </nav>
+      </div>
+
+      <div className="sidebar-bottom">
+        <ul className="nav-links">
+          <li>
+            <i className="fas fa-user"></i>
+            <span>Account</span>
+          </li>
+          <li>
+            <i className="fas fa-bell"></i>
+            <span>Notifications</span>
+          </li>
+          <li onClick={handleLogout} className="logout-link">
+            <i className="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </li>
+        </ul>
+      </div>
     </aside>
   );
 }

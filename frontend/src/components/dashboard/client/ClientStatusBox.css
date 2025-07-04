@@ -18,6 +18,7 @@
 .status-box .box__line h5 {
   font-weight: 600;
   margin: 0;
+  color: #1b2327;
 }
 
 .status-box .box__line a {
@@ -28,7 +29,7 @@
 
 .status-box .published {
   background-color: #22c064;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 5px 14px;
   font-size: 0.8rem;
   border-radius: 20px;
@@ -37,10 +38,11 @@
 .status-box .button {
   width: 100%;
   background-color: #1b2327;
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 10px 0;
   border: none;
   border-radius: 30px;
   font-weight: bold;
   cursor: pointer;
+  border-radius: 20px;
 }
