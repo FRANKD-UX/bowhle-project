@@ -2,61 +2,184 @@
 
 :root {
   --main-font: 'Montserrat', sans-serif;
-  --section-padding: 50px 0;
-  --block-margin: 10px; 
+  --section-padding: 80px 5vw;
+  --hover-color: #a362ea;
+  --card-gap: 20px;
+}
+
+.portfolio-submenu {
+  list-style: none;
+  color: #0e0e0e;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.portfolio-submenu li {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.portfolio-submenu li::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: var(--hover-color);
+  transition: width 0.3s ease;
+}
+
+.portfolio-submenu li:hover {
+  color: var(--hover-color);
+}
+
+.portfolio-submenu li:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .portfolio-submenu {
+    gap: 0.8rem;
+    font-size: 0.95rem;
+  }
 }
 
 .portfolioCards {
-  padding: var(--section-padding);
-  background-color: #fff;
   font-family: var(--main-font);
-  margin-top: 5vh;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center; 
+  padding: var(--section-padding);
+  background: #fff;
+  text-align: center;
 }
 
-.portfolio-blocks {
+.portfolio-header h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #0e0e0e;
+}
+
+.portfolio-header p {
+  color: #0e0e0e;
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Grid: exactly 3 columns on desktop */
+.portfolio-grid {
   display: grid;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(0, 30%)); /* 3 columns, allow shrinking */
-  gap: var(--block-margin);
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--card-gap);
 }
 
-
-.portfolio-block {
-  height: 500px;
+/* Square tiles */
+.portfolio-card {
+  position: relative;
   width: 100%;
-  max-width: 100%;
-  background-color: #9c9c9c;
-  padding: 20px;
-  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: #eee;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease;
 }
 
-/* Media queries for responsive design */
+.portfolio-card:hover {
+  transform: scale(1.03);
+}
 
-@media (max-width: 768px) {
-  .portfolio-block {
-    width: calc(80vw - 20px);
-    width: calc(33.33% - 10px);
+.portfolio-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay text */
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: #fff;
+  padding: 1rem;
+  text-align: left;
+  transition: background 0.4s ease;
+}
+
+.card-overlay h3 {
+  margin: 0 0 5px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.card-overlay p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* Call-to-Action Button */
+.cta-button-wrapper {
+  margin-top: 3rem;
+}
+
+.cta-button {
+  padding: 12px 28px;
+  background: var(--hover-color);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover::after {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  background-color: #7f45c4;
+}
+
+/* Responsive layout */
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
-  .portfolio-block {
-    width: calc(50% - 10px);
+@media (max-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
   }
-}
-
-@media (max-width: 320px) {
-  .portfolio-block {
-    width: 100%;
+  .portfolio-header h2 {
+    font-size: 1.8rem;
+  }
+  .portfolio-header p {
+    font-size: 0.95rem;
   }
 }

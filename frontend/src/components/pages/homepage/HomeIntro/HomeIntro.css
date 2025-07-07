@@ -4,6 +4,7 @@
   --main-font: 'Montserrat', sans-serif;
   --main-text-color: #ffffff;
   --section-padding: 80px 0;
+  --background-clor: #0e0e0e;
 }
 
 .homeIntro {
@@ -11,10 +12,11 @@
   text-align: center;
   font-family: var(--main-font);
   margin: 5vh;
+  background-color: var(--background-clor);
 }
 
 .intro-content {
-  max-width: 80%;
+  max-width: 100%;
   margin: 0 auto;
   line-height: 1.7;
 }
@@ -52,12 +54,12 @@
 
 .strategy {
   font-family: 'Space Grotesk', sans-serif;
-  color: #444;
+  color: #5899c8;
 }
 
 .play {
   font-family: 'Rubik Doodle Shadow', cursive;
-  color: #ff5c5c;
+  color: #f8aa36;
 }
 
 .chaos {
