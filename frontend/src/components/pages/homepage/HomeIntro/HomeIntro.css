@@ -1,35 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Pacifico&family=Space+Grotesk:wght@500&family=Rubik+Doodle+Shadow&family=Playfair+Display:ital,wght@1,600&display=swap');
 
 :root {
-    --main-font: 'Montserrat', sans-serif;
-    --main-text-color: #323030;
-    --section-padding: 80px 0;
+  --main-font: 'Montserrat', sans-serif;
+  --main-text-color: #ffffff;
+  --section-padding: 80px 0;
 }
 
 .homeIntro {
-    padding: var(--section-padding);
-    text-align: center;
-    font-family: var(--main-font);
-    margin: 5vh;
+  padding: var(--section-padding);
+  text-align: center;
+  font-family: var(--main-font);
+  margin: 5vh;
 }
 
 .intro-content {
-    max-width: 80%;
-    margin: 0 auto;
-    line-height: 1.7;
-    font-family: var(--main-font);
+  max-width: 80%;
+  margin: 0 auto;
+  line-height: 1.7;
 }
 
-.intro h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: var(--main-text-color);
-    font-family: var(--main-font);
+.intro h2,
+.intro-content h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: var(--main-text-color);
 }
 
-.intro p {
-    font-size: 1.1em;
-    line-height: 1.7;
-    color: var(--main-text-color);
-    font-family: var(--main-font);
+.intro p,
+.intro-content p {
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: var(--main-text-color);
+}
+
+.dynamic-word {
+  display: inline-block;
+  animation: fadeWord 0.6s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Font styles for each word */
+.magic {
+  font-family: 'Pacifico', cursive;
+  color: #7f2cdd;
+}
+
+.soul {
+  font-family: 'Playfair Display', serif;
+  color: #d43aff;
+}
+
+.strategy {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #444;
+}
+
+.play {
+  font-family: 'Rubik Doodle Shadow', cursive;
+  color: #ff5c5c;
+}
+
+.chaos {
+  font-family: 'Rubik Doodle Shadow', cursive;
+  transform: rotate(-3deg);
+  color: #e2725b;
+}
+
+/* Animation for switching */
+@keyframes fadeWord {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
