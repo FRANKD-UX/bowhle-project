@@ -1,14 +1,20 @@
+// src/components/dashboard/client/ClientDashboard.js
 import React from 'react';
 import './ClientDashboard.css';
 
 import ClientHeader from './ClientHeader';
+import ClientSidebar from './ClientSidebar';
 import ClientProjects from './ClientProjects';
 import ClientStatusBox from './ClientStatusBox';
-import ClientSidebar from './ClientSidebar';
+import { Outlet, useLocation } from 'react-router-dom';
 
-// This code defines the main structure of the client dashboard, 
-// integrating the sidebar, header, projects, and status box components.
+// This component defines the structure of the client dashboard layout.
+// It uses <Outlet /> for nested routing and conditionally displays main widgets only at the dashboard root.
+
 function ClientDashboard() {
+  const location = useLocation();
+  const isOnDashboardRoot = location.pathname === '/client-dashboard';
+
   return (
     <div className="client-dashboard-wrapper">
       <ClientSidebar />
@@ -17,13 +23,19 @@ function ClientDashboard() {
         <ClientHeader />
 
         <main className="client-main">
-          <section className="client-projects-section">
-            <ClientProjects />
-          </section>
+          {isOnDashboardRoot ? (
+            <>
+              <section className="client-projects-section">
+                <ClientProjects />
+              </section>
 
-          <aside className="client-status-sidebar">
-            <ClientStatusBox />
-          </aside>
+              <aside className="client-status-sidebar">
+                <ClientStatusBox />
+              </aside>
+            </>
+          ) : (
+            <Outlet />
+          )}
         </main>
       </div>
     </div>

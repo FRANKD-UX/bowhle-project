@@ -3,6 +3,8 @@ import './ClientHeader.css';
 import logo from '../../../Bowhle-WHITE.png';
 import avatar from '../../../assets/images/Avatar-1.png';
 
+// This component renders the header for the client dashboard,
+
 function ClientHeader() {
   const currentDate = new Date().toLocaleDateString('en-GB');
 

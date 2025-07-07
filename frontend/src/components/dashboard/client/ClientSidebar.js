@@ -1,6 +1,9 @@
 import React from 'react';
-import { Link,useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './ClientSidebar.css';
+
+// This component renders the sidebar for the client dashboard,
+// providing navigation links to different sections like Dashboard, Downloads, Projects, Account, Notifications, and Logout.
 
 function ClientSidebar() {
   const navigate = useNavigate();
@@ -22,40 +25,47 @@ function ClientSidebar() {
             <i className="fas fa-download"></i>
             <span>Downloads</span>
           </li>
-          <li>
-            <i className="fas fa-briefcase"></i>
-            <span>Projects</span>
-          </li>
         </ul>
       </div>
 
       <div className="sidebar-bottom">
         <ul className="sidebar-nav-links">
           <li>
-            <i className="fas fa-user"></i>
-            <span>Account</span>
+            <Link to="/client-dashboard/account" 
+            className="sidebar-Account-link" 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '0.75rem', 
+              textDecoration: 'none', 
+              color: 'inherit', 
+              width: '100%' 
+            }}>
+              <i className="fas fa-user"></i>
+              <span>Account</span>
+            </Link>
           </li>
           <li>
             <i className="fas fa-bell"></i>
             <span>Notifications</span>
           </li>
           <li className="sidebar-logout-link">
-  <Link
-    to="/home"
-    onClick={handleLogout}
-    style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.75rem',
-      color: 'inherit',
-      textDecoration: 'none',
-      width: '100%',
-    }}
-  >
-    <i className="fas fa-sign-out-alt"></i>
-    <span>Logout</span>
-  </Link>
-</li>
+            <Link
+              to="/home"
+              onClick={handleLogout}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                color: 'inherit',
+                textDecoration: 'none',
+                width: '100%',
+              }}
+            >
+              <i className="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </Link>
+          </li>
         </ul>
       </div>
     </aside>

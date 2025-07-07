@@ -2,9 +2,9 @@
   /* global variables are always a great start */
   --main-font: montserrat;
   --main-text-color: #323030;
-  --button-background-color: #f0f0f0;
-  --button-text-color: #323030;
-  --button-hover-background-color: #978989;
+  --button-background-color: #7f2cdd;
+  --button-text-color: #ffffff;
+  --button-hover-background-color: #641eb4;
   --button-hover-text-color: #ffffff;
   --button-border-radius: 50px;
   --button-padding: 5px 20px;
@@ -149,5 +149,34 @@ html, body, #root {
   min-height: 100vh;
   padding: 0;
   align-items: center;
+  }
+}
+
+.fancy-heading {
+  color: #ffffff;
+  font-family: var(--main-font), sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.fancy-heading span {
+  display: inline-block;
+  animation: fadeIn 2s alternate infinite;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(10px);
+  }
+  50%, 100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
   }
 }

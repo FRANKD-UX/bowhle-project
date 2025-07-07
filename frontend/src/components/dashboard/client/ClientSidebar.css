@@ -1,5 +1,6 @@
 .client-sidebar {
   width: 220px;
+  max-height: fit-content;
   background-color: #6e4070;
   color: white;
   display: flex;
