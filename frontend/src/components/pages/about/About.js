@@ -1,37 +1,77 @@
 import React from 'react';
 import './About.css';
-import AboutImage from '../../../assets/images/About.jpg';
 import AboutBanner from '../../../assets/images/AboutBanner.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function About() {
+  const navigate = useNavigate();
+
   return (
-    <>
-    {/* About hero image */}
-    <div className="about-banner">
-        <img src={AboutBanner} alt="About Us Banner" />
-        <div className="about-banner-text">
-        </div>
-    </div>
-
-    <section className="about-section">
-      <div className="about-container">
-        {/* Image section */}
-        <div className="about-image">
-          <img src={AboutImage} alt="About Us" />
-        </div>
-
-        <div className="about-text">
-          <h2>About Us</h2>
-          <p>
-            Welcome to Bowhle, where we specialize in creating stunning and functional websites tailored to your needs. Our team of experienced developers and designers are dedicated to delivering high-quality web solutions that not only look great but also perform exceptionally well.
-          </p>
-          <p>
-            At Bowhle, we believe in the power of collaboration and innovation. We work closely with our clients to understand their vision and goals, ensuring that every project is a true reflection of their brand. Whether you need a simple landing page or a complex e-commerce platform, we have the expertise to bring your ideas to life.
-          </p>
-        </div>
+    <div className="about-wrapper">
+      {/* Header Banner */}
+      <div className="about-banner">
+        <img src={AboutBanner} alt="Bowhle About Us Banner" />
       </div>
-    </section>
-    </>
+
+      {/* Main About Section */}
+      <section className="about-section">
+        <div className="about-container">
+          <div className="about-text">
+            <h2 className="about-heading">
+              Some say we’re the agency of the future. We’re just brewing the next big thing.
+            </h2>
+            <p>
+              We craft more than websites — we shape digital love letters from brands to their people.
+              We blend design, code and a sprinkle of brilliance to make work that’s not only functional but freakin’ unforgettable.
+            </p>
+            <p>
+              <strong>Our mission?</strong> Keep it human, clean and wildly effective. We believe great design should feel like a good conversation,
+              warm, intentional and deeply you.
+            </p>
+            <p>
+              From pixel to prototype, copy to code, we bring bold ideas to life with sass, soul and strategy. 
+              Whether you need a brand glow-up, a website that works overtime, or a team that just *gets it* — we’re your people.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="timeline-section">
+        <h3>Our Journey</h3>
+        <div className="timeline-container">
+          <div className="timeline-item">
+            <span className="year">2018</span>
+            <p>Just me, a laptop, and a whole lot of coffee. Bowhle began as a one-person freelance dream.</p>
+          </div>
+          <div className="timeline-item">
+            <span className="year">2021</span>
+            <p>Grew into a tiny team! Took on clients, polished our design chops, and began thinking bigger.</p>
+          </div>
+          <div className="timeline-item">
+            <span className="year">2024</span>
+            <p>We leveled up. Mastered our crafts, expanded our services, and built things we once only imagined.</p>
+          </div>
+          <div className="timeline-item">
+            <span className="year">2025</span>
+            <p>We built this very app. The Bowhle vision is now a shared journey — let’s make magic together.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="about-cta">
+        <div className="cta-sparkles">
+          <span className="sparkle sparkle-1"></span>
+          <span className="sparkle sparkle-2"></span>
+          <span className="sparkle sparkle-3"></span>
+        </div>
+        <h2 className="cta-heading">Let’s Create Some Magic</h2>
+        <button className="cta-button" onClick={() => navigate('/connect')}>
+          Let’s Connect
+        </button>
+      </section>
+    </div>
   );
 }
 

@@ -6,6 +6,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import bgVideo from './assets/videos/Bowhle-homepage-video.mp4';
 
 import HomeIntro from './components/pages/homepage/HomeIntro/HomeIntro';
 import PortfolioCards from './components/pages/homepage/PortfolioCards/PortfolioCards';
@@ -60,9 +61,10 @@ function HomePage() {
       <div className="hero-container">
         <video autoPlay loop muted playsInline className="background-video">
           <source
-            src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/82f375e7-244f-4c21-90ac-9abd7549ed05"
-            type="video/mp4"
+            src={bgVideo}
+            type="video/mp4"         
           />
+          Your browser does not support the video tag 
         </video>
 
         <section className="content">

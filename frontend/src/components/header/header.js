@@ -15,7 +15,9 @@ function Header() {
       <nav className="header-navbar">
         <div className="header-nav-left">
           <div className="header-logo">
+            <a href="/home">
             <img src={logoImage} alt="Bowhle Logo" />
+            </a>
           </div>
         </div>
 
