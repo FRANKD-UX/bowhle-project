@@ -383,11 +383,6 @@ const Testimonials = () => {
       onMouseEnter={handleSectionMouseEnter}
       onMouseLeave={handleSectionMouseLeave}
     >
-      <div className={`auto-scroll-indicator ${isPaused ? "paused" : ""}`}>
-        <span>{isPaused ? "⏸️" : "▶️"}</span>
-        <span>{isPaused ? "Paused" : "Auto-scrolling"}</span>
-      </div>
-
       <h2>What Our Clients Say</h2>
 
       <div className="testimonials-wrapper">

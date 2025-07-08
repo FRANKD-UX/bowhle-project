@@ -39,7 +39,7 @@
   -ms-overflow-style: none;
   padding: 0 10px;
   margin: 0 -10px;
-  user-select: none; /* Prevent text selection */
+  user-select: none; /* Finally prevents text selection */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -200,24 +200,6 @@
 .nav-dot.active {
   background: white;
   transform: scale(1.2);
-}
-
-.auto-scroll-indicator {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.auto-scroll-indicator.paused {
-  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Tablet Styles */

@@ -33,9 +33,9 @@
 }
 
 .brand-slide img {
-  height: 60px;
+  height: 90px;
   width: auto;
-  max-width: 120px;
+  max-width: 180px;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
