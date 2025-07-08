@@ -10,9 +10,11 @@ function Brands() {
   return (
     <section className="brands">
       <div className="brands-intro">
-        <h2>TITLE GOES HERE</h2>
+        <h2>Trusted by Brands That Get It</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+          We’ve had the joy of creating for some bold, beautiful, and brilliant brands —
+          and we’re just getting started. Whether you’re a fresh face or a seasoned player,
+          we’d love to cook up something magic with you.
         </p>
       </div>
 
@@ -24,6 +26,10 @@ function Brands() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="cta-button-wrapper">
+        <button className="cta-button">Let’s Work Together</button>
       </div>
     </section>
   );
