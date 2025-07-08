@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bowhle-project/static/css/main.a297ec8b.css",
-    "main.js": "/bowhle-project/static/js/main.fa522bc9.js",
+    "main.js": "/bowhle-project/static/js/main.724863a5.js",
     "static/js/453.670e15c7.chunk.js": "/bowhle-project/static/js/453.670e15c7.chunk.js",
     "static/media/Prototyping.png": "/bowhle-project/static/media/Prototyping.218d2812badbbe0be847.png",
     "static/media/Copywriting.png": "/bowhle-project/static/media/Copywriting.ebc28b2a032a806bfb23.png",
@@ -40,11 +40,11 @@
     "static/media/fa-v4compatibility.woff2": "/bowhle-project/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/bowhle-project/index.html",
     "main.a297ec8b.css.map": "/bowhle-project/static/css/main.a297ec8b.css.map",
-    "main.fa522bc9.js.map": "/bowhle-project/static/js/main.fa522bc9.js.map",
+    "main.724863a5.js.map": "/bowhle-project/static/js/main.724863a5.js.map",
     "453.670e15c7.chunk.js.map": "/bowhle-project/static/js/453.670e15c7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a297ec8b.css",
-    "static/js/main.fa522bc9.js"
+    "static/js/main.724863a5.js"
   ]
 }
