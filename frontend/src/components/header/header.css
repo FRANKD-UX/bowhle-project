@@ -155,7 +155,7 @@
   }
 
   .sticky-header .header-auth-buttons {
-    display: none;
+    display: none !important;
   }
 
   /* 👇 Show mobile auth only on mobile */
