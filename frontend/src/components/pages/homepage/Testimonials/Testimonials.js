@@ -123,7 +123,7 @@ const Testimonials = () => {
       const nextIndex = prevIndex >= testimonialsData.length - 1 ? 0 : prevIndex + 1
       return nextIndex
     })
-  }, [isAutoScrolling, isPaused])
+  }, [isAutoScrolling, isPaused, testimonialsData.length]);
 
   // Start auto scroll
   const startAutoScroll = useCallback(() => {
