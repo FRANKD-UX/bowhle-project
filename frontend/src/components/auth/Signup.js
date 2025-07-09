@@ -34,7 +34,7 @@ function Signup() {
   return (
     <div className="signup-wrapper">
       <div className="signup-left">
-        <h2>Hello, Friend!</h2>
+        <h3>Hello, Friend!</h3>
         <p>Enter your personal details<br />and start journey with us</p>
         <small>Already a client or employee? <span onClick={() => navigate('/login')}>Sign In</span></small>
       </div>

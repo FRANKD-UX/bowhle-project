@@ -1,19 +1,23 @@
 .signup-wrapper {
   display: flex;
   height: 100vh;
-  font-family: 'Poppins', sans-serif;
+  flex-direction: row;
+}
+
+.signup-left,
+.signup-right {
+  width: 50%;
 }
 
 .signup-left {
-  background-color: #00838f;
-  color: white;
-  width: 50%;
+  flex: 1;
+  background: radial-gradient(circle at top left, #1c94bc, #11a6b088, #8909ec);
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 4rem;
   text-align: center;
+  padding: 6rem 3rem;
 }
 
 .signup-left h2 {
@@ -33,13 +37,14 @@
 }
 
 .signup-right {
-  background-color: #2e2e2e;
+  background-color: #0e0e0e;
   color: white;
-  width: 50%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
+  position: relative;
 }
 
 .signup-right h3 {
@@ -76,7 +81,8 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 80%;
+  width: 100%;
+  max-width: 400px;
 }
 
 .signup-form input,
@@ -91,7 +97,7 @@
 
 .next-button {
   margin-top: 1.5rem;
-  background-color: #00acc1;
+  background-color: #7f45c4;
   color: white;
   padding: 0.75rem 2rem;
   font-weight: bold;
@@ -106,7 +112,71 @@
 }
 
 .login-redirect {
-  align-self: flex-end;
-  font-size: 0.8rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  padding-bottom: 2rem;
+}
+
+.login-redirect a {
+  color: #9c27b0;
+  text-decoration: none;
+  font-weight: bold;
   cursor: pointer;
+}
+
+.login-redirect span {
+  color: #a56ef7;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.login-redirect span:hover {
+  color: #0fb9c9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .signup-wrapper {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .login-redirect {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    padding-bottom: 2rem;
+  }
+
+  .signup-left,
+  .signup-right {
+    width: 100%;
+    padding: 3rem 2rem;
+  }
+
+  .signup-left {
+    height: auto;
+    text-align: center;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .signup-left h3{
+    height: auto;
+    text-align: center;
+    align-items: center;
+    padding-top: 6rem;
+  }
+
+  .signup-right {
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+  }
+
+  .signup-form {
+    width: 100%;
+  }
 }
