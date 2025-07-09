@@ -1,0 +1,150 @@
+.services-page {
+  background-color: #ffffff;
+  padding: 0 0 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* Hero Banner with animation */
+.services-banner {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.services-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transform: scale(1.1);
+  animation: parallaxZoom 6s ease-in-out forwards;
+}
+
+@keyframes parallaxZoom {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Header Section */
+.services-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+}
+
+.services-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #222;
+  padding: 5rem 0 0 1rem;
+}
+
+.services-header p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Split Grid Layout */
+.services-grid-split {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.service-column {
+  width: 100%;
+}
+
+/* Category Titles */
+.category-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.design-title {
+  background-color: #6bbbc7;
+}
+
+.uiux-title {
+  background-color: #2a8baf;
+  position: relative;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  color: #e0e0e0;
+}
+
+/* Tile Layout */
+.tile-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Tiles */
+.service-tile {
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #e6f8f8;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.design-tile {
+  background-color: #a5e3e3;
+}
+
+.uiux-tile {
+  background-color: #6bbbc7;
+}
+
+.service-tile:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+/* Responsive Layout */
+@media (min-width: 768px) {
+  .services-grid-split {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 0 0 1rem;
+  }
+
+  .service-column {
+    width: 48%;
+  }
+
+  .tile-group {
+    grid-template-columns: 1fr;
+  }
+
+  .services-header h1 {
+    font-size: 2.8rem;
+  }
+
+  .category-title {
+    font-size: 2.2rem;
+  }
+}

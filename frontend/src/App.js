@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useLocation, Link } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -13,6 +12,7 @@ import PortfolioCards from './components/pages/homepage/PortfolioCards/Portfolio
 import Brands from './components/pages/homepage/Brands/Brands';
 import Testimonials from './components/pages/homepage/Testimonials/Testimonials';
 import About from './components/pages/about/About';
+import Services from './components/pages/Services/Services';
 
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
@@ -101,6 +101,7 @@ function AppWithRoutes() {
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
 
