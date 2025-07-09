@@ -79,49 +79,64 @@ Handled all server-side functionality and database operations.
 
 ### Key Features:
 
-1. **MongoDB Integration**
-   - Schema for users, projects, feedback, uploads, etc.
+### Features:
+- 🔐 JWT + Google Login
+- ✅ Email verification
+- 👥 Custom user model (client/employee)
+- 🗃️ Project & report tracking
+- 📩 Email notifications for report submission
+- 📈 Admin-only analytics
 
-2. **Email Enquiry System**
-   - Connected via **NodeMailer**  
-   - Routes messages from the contact form to company inbox  
+### Setup:
+```bash
+python -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
 
-3. **Node.js + Express API**
-   - RESTful API endpoints for frontend interaction  
-   - Routes for contact, projects, testimonials, feedback, login/signup  
-
-4. **Testimonial System**
-   - Stores feedback with client consent toggle  
-   - Manages visibility for public testimonial display  
-
-5. **Employee Tracker Portal**
-   - Backend logic for updating project statuses  
-   - Tracks design phases (brief, in progress, submitted, revisions, completed)  
-
-6. **Chatbot with Escalation**
-   - FAQ automation logic  
-   - Live chat escalation via websocket integration (future upgrade path)  
-
----
-
-## 📌 Usage Summary
-
-- **Clients** can:
-  - View their current and past projects  
-  - Track progress and leave feedback  
-  - Interact with a support chatbot
-
-- **Employees** can:
-  - Access assigned projects  
-  - Upload designs and mark progress  
-  - See revisions, submit updates, and finalize work  
+### Email Verification:
+- Gmail SMTP setup in `settings.py`
+- Use App Password if 2FA is on
 
 ---
 
-## 🚧 Ongoing / Future Enhancements
+## 💻 Frontend (React)/ Back end (Django) intergration 
 
-- Admin-level dashboard for analytics  
-- Integration with cloud storage (Firebase)  
-- Real-time notification system  
-- Full authentication and session control  
-- CMS integration for editable portfolio/projects  
+### Features:
+- 🔐 Auth (JWT + Google SSO)
+- 🔁 Role-based dashboards
+- 📄 File uploads
+- 🔎 Pagination + search
+- ✅ Protected routes
+
+### Setup:
+```bash
+npm install axios react-router-dom @react-oauth/google jwt-decode
+npm start
+```
+
+### Folder Structure:
+```
+src/
+├── utils/ (api.js, auth.js)
+├── routes/ (PrivateRoute.js)
+├── pages/ (Login.js, Dashboards, Upload, List)
+└── App.js
+```
+
+---
+
+## ✅ How To Test
+| Feature                    | How to Test                              |
+|---------------------------|-------------------------------------------|
+| 🔑 Register/Login         | Use Login UI or Postman                  |
+| 📬 Email verification     | Check your Gmail inbox                   |
+| 👤 Role-based access      | Login as both roles                      |
+| 📂 Uploads                | Upload image to project                  |
+| 📝 Report submission      | Client receives email automatically      |
+| 📊 Analytics              | Only admin can view                      |
+
