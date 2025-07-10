@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
+from .serializers import DesignCommentSerializer
 from django.shortcuts import get_object_or_404
 from .serializers import (
     UserRegistrationSerializer,
