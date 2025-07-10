@@ -77,7 +77,7 @@ function Signup() {
         <p className="login-redirect">Already a client or employee? <span onClick={() => navigate('/login')}>Sign In</span></p>
         <h3>Sign Up</h3>
 
-        {/* 🔐 Google Sign-Up */}
+        {/* Google Sign-Up */}
         <div style={{ marginBottom: '1.5rem' }}>
           <GoogleLogin
             onSuccess={handleGoogleSignup}
