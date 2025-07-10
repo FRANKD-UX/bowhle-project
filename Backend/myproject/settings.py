@@ -7,6 +7,7 @@ import os
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+ROOT_URLCONF = 'myapp.urls'
 
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-nma=xi6x2p-crjg^ifqqkapyu1qjd0l=+wn)-rijk_o%$!k3w_")
 DEBUG = os.getenv("DEBUG", "True").lower() == "true"
@@ -14,7 +15,7 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 
 
-# Database (PostgreSQL/SQLite config)
+# Database (keep your existing PostgreSQL/SQLite config)
 if os.getenv("DB_NAME"):
     DATABASES = {
         "default": {
@@ -44,6 +45,11 @@ X_FRAME_OPTIONS = 'DENY'
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
 
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
 # Enhanced JWT Settings
 SIMPLE_JWT.update({
     "ROTATE_REFRESH_TOKENS": True,
@@ -91,3 +97,15 @@ if not DEBUG:
     INSTALLED_APPS.insert(0, 'whitenoise.runserver_nostatic')
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'myapp', 
+    # ...your other apps...
+]

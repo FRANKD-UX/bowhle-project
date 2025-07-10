@@ -34,68 +34,15 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         return user
 
-class UserSerializer(serializers.ModelSerializer):
+class UserLoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
+class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'date_joined']
         read_only_fields = ['id', 'username', 'date_joined']
-
-class DesignProjectSerializer(serializers.ModelSerializer):
-    client = UserSerializer(read_only=True)
-    designer = UserSerializer(read_only=True)
-    status_display = serializers.CharField(source='get_status_display', read_only=True)
-    priority_display = serializers.CharField(source='get_priority_display', read_only=True)
-    
-    class Meta:
-        model = DesignProject
-        fields = '__all__'
-        read_only_fields = ('created_at', 'updated_at', 'completed_at', 'client', 'designer')
-
-class DesignProgressSerializer(serializers.ModelSerializer):
-    updated_by = UserSerializer(read_only=True)
-    status_display = serializers.CharField(source='get_status_display', read_only=True)
-    
-    class Meta:
-        model = DesignProgress
-        fields = '__all__'
-        read_only_fields = ('updated_at', 'updated_by')
-
-    def validate_progress_percentage(self, value):
-        if value < 0 or value > 100:
-            raise serializers.ValidationError("Progress must be between 0 and 100")
-        return value
-
-class DesignFileSerializer(serializers.ModelSerializer):
-    uploaded_by = UserSerializer(read_only=True)
-    file_type_display = serializers.CharField(source='get_file_type_display', read_only=True)
-    file_url = serializers.SerializerMethodField()
-    
-    class Meta:
-        model = DesignFile
-        fields = '__all__'
-        read_only_fields = ('uploaded_at', 'uploaded_by')
-
-    def get_file_url(self, obj):
-        request = self.context.get('request')
-        if obj.file and request:
-            return request.build_absolute_uri(obj.file.url)
-        return None
-
-class ProjectCommentSerializer(serializers.ModelSerializer):
-    author = UserSerializer(read_only=True)
-    
-    class Meta:
-        model = ProjectComment
-        fields = '__all__'
-        read_only_fields = ('created_at', 'author')
-
-class NoteSerializer(serializers.ModelSerializer):
-    author = UserSerializer(read_only=True)
-    
-    class Meta:
-        model = Note
-        fields = '__all__'
-        read_only_fields = ('created_at', 'author')
 
 class PasswordChangeSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True)
@@ -112,6 +59,63 @@ class PasswordChangeSerializer(serializers.Serializer):
         if not user.check_password(value):
             raise serializers.ValidationError("Old password is incorrect")
         return value
+
+class DesignProjectSerializer(serializers.ModelSerializer):
+    client = UserProfileSerializer(read_only=True)
+    designer = UserProfileSerializer(read_only=True)
+    status_display = serializers.CharField(source='get_status_display', read_only=True)
+    priority_display = serializers.CharField(source='get_priority_display', read_only=True)
+    
+    class Meta:
+        model = DesignProject
+        fields = '__all__'
+        read_only_fields = ('created_at', 'updated_at', 'completed_at', 'client', 'designer')
+
+class DesignProgressSerializer(serializers.ModelSerializer):
+    updated_by = UserProfileSerializer(read_only=True)
+    status_display = serializers.CharField(source='get_status_display', read_only=True)
+    
+    class Meta:
+        model = DesignProgress
+        fields = '__all__'
+        read_only_fields = ('updated_at', 'updated_by')
+
+    def validate_progress_percentage(self, value):
+        if value < 0 or value > 100:
+            raise serializers.ValidationError("Progress must be between 0 and 100")
+        return value
+
+class DesignFileSerializer(serializers.ModelSerializer):
+    uploaded_by = UserProfileSerializer(read_only=True)
+    file_type_display = serializers.CharField(source='get_file_type_display', read_only=True)
+    file_url = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = DesignFile
+        fields = '__all__'
+        read_only_fields = ('uploaded_at', 'uploaded_by')
+
+    def get_file_url(self, obj):
+        request = self.context.get('request')
+        if obj.file and request:
+            return request.build_absolute_uri(obj.file.url)
+        return None
+
+class ProjectCommentSerializer(serializers.ModelSerializer):
+    author = UserProfileSerializer(read_only=True)
+    
+    class Meta:
+        model = ProjectComment
+        fields = '__all__'
+        read_only_fields = ('created_at', 'author')
+
+class NoteSerializer(serializers.ModelSerializer):
+    author = UserProfileSerializer(read_only=True)
+    
+    class Meta:
+        model = Note
+        fields = '__all__'
+        read_only_fields = ('created_at', 'author')
 
 class TokenRefreshSerializer(serializers.Serializer):
     refresh = serializers.CharField()

@@ -4,15 +4,17 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
+from django.shortcuts import get_object_or_404
 from .serializers import (
     UserRegistrationSerializer,
     UserLoginSerializer,
     UserProfileSerializer,
-    ChangePasswordSerializer,
+    PasswordChangeSerializer,  # Changed from ChangePasswordSerializer
     DesignProjectSerializer,
-    DesignProgressSerializer
+    DesignProgressSerializer,
+    DesignCommentSerializer
 )
-from .models import DesignProject, DesignProgress
+from .models import DesignProject, DesignProgress, DesignFile, ProjectComment
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -65,7 +67,7 @@ def user_profile(request):
 @permission_classes([IsAuthenticated])
 def change_password(request):
     """Change user password"""
-    serializer = ChangePasswordSerializer(data=request.data, context={'user': request.user})
+    serializer = PasswordChangeSerializer(data=request.data, context={'user': request.user})
     if serializer.is_valid():
         request.user.set_password(serializer.validated_data['new_password'])
         request.user.save()
@@ -91,33 +93,53 @@ def design_projects(request):
 @permission_classes([IsAuthenticated])
 def design_project_detail(request, pk):
     """Retrieve, update or delete a design project"""
-    try:
-        project = DesignProject.objects.get(pk=pk, client=request.user)
-    except DesignProject.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
+    project = get_object_or_404(DesignProject, pk=pk, client=request.user)
+    
     if request.method == 'GET':
         serializer = DesignProjectSerializer(project)
         return Response(serializer.data)
-
+    
     elif request.method == 'PUT':
         serializer = DesignProjectSerializer(project, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    
     elif request.method == 'DELETE':
         project.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def project_progress(request, project_id):
-    """Get progress updates for a specific project"""
-    progress_updates = DesignProgress.objects.filter(
-        project__id=project_id,
-        project__client=request.user
-    ).order_by('-date')
-    serializer = DesignProgressSerializer(progress_updates, many=True)
-    return Response(serializer.data)
+def progress_list(request, project_id):
+    """Get or add progress updates"""
+    project = get_object_or_404(DesignProject, pk=project_id, client=request.user)
+    
+    if request.method == 'GET':
+        progress_updates = project.progress_updates.all()
+        serializer = DesignProgressSerializer(progress_updates, many=True)
+        return Response(serializer.data)
+    
+    serializer = DesignProgressSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(project=project, updated_by=request.user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def comment_list(request, project_id):
+    """Get or add project comments"""
+    project = get_object_or_404(DesignProject, pk=project_id, client=request.user)
+    
+    if request.method == 'GET':
+        comments = project.comments.all()
+        serializer = DesignCommentSerializer(comments, many=True)
+        return Response(serializer.data)
+    
+    serializer = DesignCommentSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(project=project, author=request.user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
