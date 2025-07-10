@@ -58,6 +58,7 @@ function EmployeeSidebar() {
 
       <div className="sidebar-bottom">
         <ul className="sidebar-nav-links">
+
           <li className={location.pathname.startsWith('/employee-dashboard/account') ? 'active' : ''}>
             <Link
               to="/employee-dashboard/account"
@@ -103,3 +104,4 @@ function EmployeeSidebar() {
 }
 
 export default EmployeeSidebar;
+

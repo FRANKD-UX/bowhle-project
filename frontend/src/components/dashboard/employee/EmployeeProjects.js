@@ -14,6 +14,7 @@ function ClientProjects() {
   // The thumbnails array contains the image URLs for past projects.
 
   return (
+
     <div className="employee-projects">
       <h2>DASHBOARD</h2>
       <div className="timeline-card">

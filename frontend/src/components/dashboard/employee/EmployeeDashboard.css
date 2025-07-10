@@ -7,7 +7,7 @@
 
 /* Sidebar stays on the left */
 .employee-dashboard-wrapper > .employee-sidebar {
-  flex-shrink: 0;
+ flex-shrink: 0;
 }
 
 /* Right-hand content next to sidebar */
