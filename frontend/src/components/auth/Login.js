@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import Loader from '../common/Loader';
-import API from '../../../utils/api';
-import jwt_decode from 'jwt-decode';
+import API from '../../utils/api';
+import { jwtDecode } from 'jwt-decode';
 import { GoogleLogin } from '@react-oauth/google';
 
 
@@ -43,12 +43,12 @@ function Login() {
     }
   };
 
-  // 🔐 Google Login logic
+  // Google Login logic
   const handleGoogleLogin = async (credentialResponse) => {
     setLoading(true);
     try {
       const { credential } = credentialResponse;
-      const decoded = jwt_decode(credential);
+      const decoded = jwtDecode(credential);
 
       const res = await API.post("auth/google/", {
         email: decoded.email
