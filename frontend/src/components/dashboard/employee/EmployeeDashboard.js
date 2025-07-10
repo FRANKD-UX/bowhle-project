@@ -1,32 +1,43 @@
 import React from 'react';
 import './EmployeeDashboard.css';
 
+import EmployeeHeader from './EmployeeHeader';
+import EmployeeSidebar from './EmployeeSidebar';
+import EmployeeProjects from './EmployeeProjects';
+import EmployeeStatusBox from './EmployeeStatusBox';
+
+import { Outlet, useLocation } from 'react-router-dom';
+
+// This component defines the structure of the employee dashboard layout.
+// It mirrors the ClientDashboard layout and uses <Outlet /> for nested routing.
+
 function EmployeeDashboard() {
+  const location = useLocation();
+  const isOnDashboardRoot = location.pathname === '/employee-dashboard';
+
   return (
-    <div className="dashboard-container">
-      <aside className="sidebar">
-        <h2>Dashboard</h2>
-        <nav>
-          <ul>
-            <li>Upload Design</li>
-            <li>Notifications</li>
-            <li>Logout</li>
-          </ul>
-        </nav>
-      </aside>
+    <div className="client-dashboard-wrapper">
+      <EmployeeSidebar />
 
-      <main className="main-content">
-        <header className="dashboard-header">
-          <h1>Welcome, Employee 👋</h1>
-        </header>
+      <div className="client-dashboard-content">
+        <EmployeeHeader />
 
-        <section className="upload-area">
-          <h2>Upload a Design</h2>
-          <input type="file" accept=".pdf,.doc,.docx,.jpg,.png,.ppt,.pptx" />
-          <input type="url" placeholder="Or paste an external link (e.g. WeTransfer)" />
-          <button>Submit</button>
-        </section>
-      </main>
+        <main className="client-main">
+          {isOnDashboardRoot ? (
+            <>
+              <section className="client-projects-section">
+                <EmployeeProjects />
+              </section>
+
+              <aside className="client-status-sidebar">
+                <EmployeeStatusBox />
+              </aside>
+            </>
+          ) : (
+            <Outlet />
+          )}
+        </main>
+      </div>
     </div>
   );
 }
