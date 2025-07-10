@@ -87,11 +87,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'allauth.socialaccount.providers.google',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
-    'myapp', 
+    'myapp.apps.MyappConfig', 
     'django_extensions',
+    'allauth',
 ]
 
 # Required middleware
@@ -140,3 +141,33 @@ ALLOWED_HOSTS = [
     '0.0.0.0',  # Add this for docker/network access
     # Add your production domain when ready
 ]
+
+# Set SITE_ID (usually 1 for a single site)
+SITE_ID = 1
+
+# Authentication backends
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth backend
+]
+
+# Optional: Customize allauth settings
+ACCOUNT_EMAIL_VERIFICATION = 'optional'  # or 'mandatory'
+LOGIN_REDIRECT_URL = '/'  # Redirect after login
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': 'YOUR_GOOGLE_CLIENT_ID',
+            'secret': 'YOUR_GOOGLE_CLIENT_SECRET',
+            'key': ''
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
