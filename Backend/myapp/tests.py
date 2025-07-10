@@ -13,7 +13,7 @@ class AuthTests(TestCase):
         self.client = APIClient()
         self.user_data = {
             'email': 'test@example.com',
-            'password': 'testpass123',
+            'password': '                  ',
             'role': 'client'
         }
         self.user = CustomUser.objects.create_user(**self.user_data)
