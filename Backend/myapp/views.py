@@ -1,215 +1,123 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-from django.contrib.auth import authenticate
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.views import TokenObtainPairView
-from django.contrib.auth.models import User
-
-# Import your serializers
+from django.contrib.auth import authenticate
 from .serializers import (
-    UserRegistrationSerializer, 
-    UserSerializer, 
-    NoteSerializer,
-    PasswordChangeSerializer
+    UserRegistrationSerializer,
+    UserLoginSerializer,
+    UserProfileSerializer,
+    ChangePasswordSerializer,
+    DesignProjectSerializer,
+    DesignProgressSerializer
 )
-from .models import Note
-
-# Create your views here.
-
-def home(request):
-    """Basic home view for testing"""
-    data = {"message": "Hello, Django API!"}
-    return JsonResponse(data)
-
+from .models import DesignProject, DesignProgress
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def register(request):
-    """User registration endpoint"""
+def register_user(request):
+    """User registration with automatic token generation"""
     serializer = UserRegistrationSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.save()
-        
-        # Generate tokens for the new user
         refresh = RefreshToken.for_user(user)
-        
         return Response({
-            'message': 'User created successfully',
-            'user': {
-                'id': user.id,
-                'username': user.username,
-                'email': user.email,
-                'first_name': user.first_name,
-                'last_name': user.last_name,
-            },
-            'tokens': {
-                'refresh': str(refresh),
-                'access': str(refresh.access_token),
-            }
+            'user': UserProfileSerializer(user).data,
+            'access': str(refresh.access_token),
+            'refresh': str(refresh)
         }, status=status.HTTP_201_CREATED)
-    
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def login(request):
-    """Custom login endpoint"""
-    username = request.data.get('username')
-    password = request.data.get('password')
-    
-    if not username or not password:
-        return Response({
-            'error': 'Username and password are required'
-        }, status=status.HTTP_400_BAD_REQUEST)
-    
-    user = authenticate(username=username, password=password)
-    
-    if user:
-        refresh = RefreshToken.for_user(user)
-        return Response({
-            'message': 'Login successful',
-            'user': {
-                'id': user.id,
-                'username': user.username,
-                'email': user.email,
-                'first_name': user.first_name,
-                'last_name': user.last_name,
-            },
-            'tokens': {
-                'refresh': str(refresh),
+def login_user(request):
+    """User login with JWT token generation"""
+    serializer = UserLoginSerializer(data=request.data)
+    if serializer.is_valid():
+        user = authenticate(
+            username=serializer.validated_data['username'],
+            password=serializer.validated_data['password']
+        )
+        if user:
+            refresh = RefreshToken.for_user(user)
+            return Response({
                 'access': str(refresh.access_token),
-            }
-        }, status=status.HTTP_200_OK)
+                'refresh': str(refresh)
+            }, status=status.HTTP_200_OK)
+    return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+@api_view(['GET', 'PUT'])
+@permission_classes([IsAuthenticated])
+def user_profile(request):
+    """Get or update user profile"""
+    if request.method == 'GET':
+        serializer = UserProfileSerializer(request.user)
+        return Response(serializer.data)
     
-    return Response({
-        'error': 'Invalid credentials'
-    }, status=status.HTTP_401_UNAUTHORIZED)
-
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def profile(request):
-    """Get user profile"""
-    serializer = UserSerializer(request.user)
-    return Response(serializer.data)
-
-
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])
-def update_profile(request):
-    """Update user profile"""
-    serializer = UserSerializer(request.user, data=request.data, partial=True)
+    serializer = UserProfileSerializer(request.user, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
-        return Response({
-            'message': 'Profile updated successfully',
-            'user': serializer.data
-        })
+        return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def change_password(request):
     """Change user password"""
-    serializer = PasswordChangeSerializer(data=request.data, context={'request': request})
+    serializer = ChangePasswordSerializer(data=request.data, context={'user': request.user})
     if serializer.is_valid():
-        serializer.save()
-        return Response({
-            'message': 'Password changed successfully'
-        })
+        request.user.set_password(serializer.validated_data['new_password'])
+        request.user.save()
+        return Response({'message': 'Password updated successfully'})
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-# Notes/Design CRUD operations
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def notes(request):
-    """List all notes or create a new note"""
+def design_projects(request):
+    """List or create design projects"""
     if request.method == 'GET':
-        notes = Note.objects.filter(author=request.user)
-        serializer = NoteSerializer(notes, many=True)
+        projects = DesignProject.objects.filter(client=request.user)
+        serializer = DesignProjectSerializer(projects, many=True)
         return Response(serializer.data)
     
-    elif request.method == 'POST':
-        serializer = NoteSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(author=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    serializer = DesignProjectSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(client=request.user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
-def note_detail(request, pk):
-    """Retrieve, update or delete a note"""
+def design_project_detail(request, pk):
+    """Retrieve, update or delete a design project"""
     try:
-        note = Note.objects.get(pk=pk, author=request.user)
-    except Note.DoesNotExist:
-        return Response({
-            'error': 'Note not found'
-        }, status=status.HTTP_404_NOT_FOUND)
-    
+        project = DesignProject.objects.get(pk=pk, client=request.user)
+    except DesignProject.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
     if request.method == 'GET':
-        serializer = NoteSerializer(note)
+        serializer = DesignProjectSerializer(project)
         return Response(serializer.data)
-    
+
     elif request.method == 'PUT':
-        serializer = NoteSerializer(note, data=request.data)
+        serializer = DesignProjectSerializer(project, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
     elif request.method == 'DELETE':
-        note.delete()
-        return Response({
-            'message': 'Note deleted successfully'
-        }, status=status.HTTP_204_NO_CONTENT)
-
+        project.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def dashboard(request):
-    """Dashboard view with user stats"""
-    user_notes = Note.objects.filter(author=request.user)
-    
-    return Response({
-        'user': {
-            'username': request.user.username,
-            'email': request.user.email,
-            'date_joined': request.user.date_joined,
-        },
-        'stats': {
-            'total_notes': user_notes.count(),
-            'recent_notes': NoteSerializer(
-                user_notes.order_by('-created_at')[:5], 
-                many=True
-            ).data
-        }
-    })
-
-
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def logout(request):
-    """Logout endpoint (client should delete tokens)"""
-    return Response({
-        'message': 'Logged out successfully. Please delete your tokens.'
-    })
-
-
-# Health check endpoint
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def health_check(request):
-    """API health check"""
-    return Response({
-        'status': 'healthy',
-        'message': 'API is working correctly'
-    })
+def project_progress(request, project_id):
+    """Get progress updates for a specific project"""
+    progress_updates = DesignProgress.objects.filter(
+        project__id=project_id,
+        project__client=request.user
+    ).order_by('-date')
+    serializer = DesignProgressSerializer(progress_updates, many=True)
+    return Response(serializer.data)
