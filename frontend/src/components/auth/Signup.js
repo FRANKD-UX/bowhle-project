@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signup.css';
 
+import API from '../../utils/api';
+import { jwtDecode } from 'jwt-decode';
+import { GoogleLogin } from '@react-oauth/google';
+
 function Signup() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
@@ -29,6 +33,36 @@ function Signup() {
     }
   };
 
+  // 🔐 Google Sign-Up handler
+  const handleGoogleSignup = async (credentialResponse) => {
+    try {
+      const { credential } = credentialResponse;
+      const decoded = jwtDecode(credential);
+
+      const res = await API.post("auth/google/", {
+        email: decoded.email,
+      });
+
+      const token = res.data.access;
+      localStorage.setItem("token", token);
+
+      const userRes = await API.get("auth/user/");
+      const user = userRes.data;
+      localStorage.setItem("user", JSON.stringify(user));
+
+      if (user.role === 'client') {
+        navigate('/client-dashboard');
+      } else if (user.role === 'employee') {
+        navigate('/employee-dashboard');
+      } else {
+        alert("Unknown role from Google sign-up");
+      }
+    } catch (err) {
+      console.error("Google sign-up failed", err);
+      alert("Google Sign-Up failed.");
+    }
+  };
+
   const stepTitles = ['Basic Details', 'Contact Details', 'Verification'];
 
   return (
@@ -42,6 +76,14 @@ function Signup() {
       <div className="signup-right">
         <p className="login-redirect">Already a client or employee? <span onClick={() => navigate('/login')}>Sign In</span></p>
         <h3>Sign Up</h3>
+
+        {/* 🔐 Google Sign-Up */}
+        <div style={{ marginBottom: '1.5rem' }}>
+          <GoogleLogin
+            onSuccess={handleGoogleSignup}
+            onError={() => alert("Google Sign Up Failed")}
+          />
+        </div>
 
         <div className="step-indicator">
           {stepTitles.map((label, index) => (
@@ -77,7 +119,7 @@ function Signup() {
           )}
         </form>
 
-        <button className="next-button" onClick={handleNext}>Save & Continue</button>
+        <button className="next-button" onClick={handleNext}>Continue</button>
       </div>
     </div>
   );
