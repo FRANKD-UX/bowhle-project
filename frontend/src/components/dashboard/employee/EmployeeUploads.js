@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './EmployeeUploads.css';
 import { FaCloudUploadAlt } from 'react-icons/fa';
 
+// This component allows employees to upload project files or provide links to external file transfers.
+// It supports drag-and-drop functionality and validates file types.
+
 function EmployeeUploads() {
   const [file, setFile] = useState(null);
   const [link, setLink] = useState('');

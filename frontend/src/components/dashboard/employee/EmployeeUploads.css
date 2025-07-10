@@ -4,6 +4,9 @@
   margin: 0 auto;
   font-family: 'Montserrat', sans-serif;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .upload-container h2 {
@@ -71,6 +74,7 @@
 /* Submit button */
 .submit-button {
   font-family: 'Montserrat', sans-serif;
+  align-self: center;
   background-color: #6e4070;
   color: white;
   border: none;
