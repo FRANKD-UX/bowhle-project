@@ -1,11 +1,11 @@
-.client-content {
+.employee-content {
   background-color: #fff;
   border-radius: 20px;
   padding: 2rem;
   margin-bottom: 2rem;
 }
 
-.client-content h2 {
+.employee-content h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   font-weight: 600;

@@ -1,12 +1,11 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import './EmployeeSidebar.css';
 
-// This component renders the sidebar for the client dashboard,
-// providing navigation links to different sections like Dashboard, Downloads, Projects, Account, Notifications, and Logout.
-
-function ClientSidebar() {
+// Sidebar for Employee Dashboard - navigation between pages
+function EmployeeSidebar() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -14,33 +13,64 @@ function ClientSidebar() {
   };
 
   return (
-    <aside className="client-sidebar">
+    <aside className="employee-sidebar">
       <div className="sidebar-top">
         <ul className="sidebar-nav-links">
-          <li className="active">
-            <i className="fas fa-home"></i>
-            <span>Dashboard</span>
+          <li className={location.pathname === '/employee-dashboard' ? 'active' : ''}>
+            <button
+              onClick={() => navigate('/employee-dashboard')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                textDecoration: 'none',
+                color: 'inherit',
+                width: '100%',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+              }}
+            >
+              <i className="fas fa-home"></i>
+              <span>Dashboard</span>
+            </button>
           </li>
-          <li>
-            <i className="fas fa-download"></i>
-            <span>Downloads</span>
+
+          <li className={location.pathname.startsWith('/employee-dashboard/uploads') ? 'active' : ''}>
+            <Link
+              to="/employee-dashboard/uploads"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                textDecoration: 'none',
+                color: 'inherit',
+                width: '100%',
+              }}
+            >
+              <i className="fas fa-upload"></i>
+              <span>Uploads</span>
+            </Link>
           </li>
         </ul>
       </div>
 
       <div className="sidebar-bottom">
         <ul className="sidebar-nav-links">
-          <li>
-            <Link to="/client-dashboard/account" 
-            className="sidebar-Account-link" 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.75rem', 
-              textDecoration: 'none', 
-              color: 'inherit', 
-              width: '100%' 
-            }}>
+          <li className={location.pathname.startsWith('/employee-dashboard/account') ? 'active' : ''}>
+            <Link
+              to="/employee-dashboard/account"
+              className="sidebar-Account-link"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                textDecoration: 'none',
+                color: 'inherit',
+                width: '100%',
+              }}
+            >
               <i className="fas fa-user"></i>
               <span>Account</span>
             </Link>
@@ -72,4 +102,4 @@ function ClientSidebar() {
   );
 }
 
-export default ClientSidebar;
+export default EmployeeSidebar;

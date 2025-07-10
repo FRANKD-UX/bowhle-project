@@ -33,7 +33,7 @@ function Signup() {
     }
   };
 
-  // 🔐 Google Sign-Up handler
+  // Google Sign-Up handler
   const handleGoogleSignup = async (credentialResponse) => {
     try {
       const { credential } = credentialResponse;

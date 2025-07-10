@@ -4,7 +4,7 @@ import project1Img from '../../../assets/images/Project1.png';
 import project2Img from '../../../assets/images/Project2.png';
 import project3Img from '../../../assets/images/Project3.png';
 
-// This component displays the client's current project status and past projects with thumbnails.
+// This component displays the employee's current project status and past projects with thumbnails.
 // It includes a progress bar for the current project and a gallery of past project thumbnails.
 
 function ClientProjects() {
@@ -14,10 +14,10 @@ function ClientProjects() {
   // The thumbnails array contains the image URLs for past projects.
 
   return (
-    <div className="client-projects">
+    <div className="employee-projects">
       <h2>DASHBOARD</h2>
       <div className="timeline-card">
-        <h4>CURRENT PROJECT: BRIEF 0001</h4>
+        <h4>Current Brief: Brief 0001</h4>
         <div className="progress-bar">
           {steps.map((step, index) => (
             <div className="progress-step" key={index}>{step}</div>
@@ -26,7 +26,7 @@ function ClientProjects() {
       </div>
 
       <div className="past-projects-card">
-        <h4>PAST PROJECTS</h4>
+        <h4>Current Projects</h4>
         <div className="project-gallery">
           {thumbnails.map((img, index) => (
             <div className="thumbnail" key={index}>

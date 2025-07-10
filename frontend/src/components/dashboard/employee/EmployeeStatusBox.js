@@ -1,7 +1,7 @@
 import React from 'react';
 import './EmployeeStatusBox.css';
 
-function ClientStatusBox() {
+function EmployeeStatusBox() {
   return (
     <div className="status-box">
       <div className="box__line">
@@ -12,9 +12,9 @@ function ClientStatusBox() {
         <h5>Account</h5>
         <a href="#">Profile</a>
       </div>
-      <button className="button">Download All</button>
+      <button className="button">Downloads</button>
     </div>
   );
 }
 
-export default ClientStatusBox;
+export default EmployeeStatusBox;

@@ -1,9 +1,9 @@
 import React from 'react';
 import './EmployeeContentForm.css';
 
-function ClientContentForm() {
+function EmployeeContentForm() {
   return (
-    <section className="client-form">
+    <section className="employee-form">
       <div className="section-title">
         <h2>DASHBOARD</h2>
         <p>CURRENT PROJECT: BRIEF 0001</p>
@@ -27,4 +27,4 @@ function ClientContentForm() {
   );
 }
 
-export default ClientContentForm;
+export default EmployeeContentForm;

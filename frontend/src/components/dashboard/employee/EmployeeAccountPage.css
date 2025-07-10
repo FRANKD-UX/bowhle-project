@@ -43,12 +43,12 @@
   font-size: 1rem;
 }
 
-.client-name {
+.employee-name {
   margin: 1rem 0 0.25rem;
   font-weight: 600;
 }
 
-.client-id {
+.employee-id {
   font-size: 0.9rem;
   color: #555;
 }

@@ -19,8 +19,10 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 
 import ClientDashboard from './components/dashboard/client/ClientDashboard';
+import EmployeeUploads from './components/dashboard/employee/EmployeeUploads';
 import ClientAccountPage from './components/dashboard/client/ClientAccountPage';
 import EmployeeDashboard from './components/dashboard/employee/EmployeeDashboard';
+import EmployeeAccountPage from './components/dashboard/employee/EmployeeAccountPage';
 
 // Homepage layout only (public)
 function HomePage() {
@@ -112,7 +114,11 @@ function AppWithRoutes() {
             <Route path="account" element={<ClientAccountPage />} />
           </Route>
 
-          <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
+          {/* Nest routes under /employee-dashboard */}
+          <Route path="/employee-dashboard" element={<EmployeeDashboard />}>
+          <Route path="account" element={<EmployeeAccountPage />} />
+          <Route path="uploads" element={<EmployeeUploads />} />
+          </Route>
         </Routes>
       </main>
 

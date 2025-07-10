@@ -16,20 +16,20 @@ function EmployeeDashboard() {
   const isOnDashboardRoot = location.pathname === '/employee-dashboard';
 
   return (
-    <div className="client-dashboard-wrapper">
+    <div className="employee-dashboard-wrapper">
       <EmployeeSidebar />
 
-      <div className="client-dashboard-content">
+      <div className="employee-dashboard-content">
         <EmployeeHeader />
 
-        <main className="client-main">
+        <main className="employee-main">
           {isOnDashboardRoot ? (
             <>
-              <section className="client-projects-section">
+              <section className="employee-projects-section">
                 <EmployeeProjects />
               </section>
 
-              <aside className="client-status-sidebar">
+              <aside className="employee-status-sidebar">
                 <EmployeeStatusBox />
               </aside>
             </>

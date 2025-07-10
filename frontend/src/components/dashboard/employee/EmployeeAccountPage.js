@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './EmployeeAccountPage.css';
 import avatar from '../../../assets/images/Avatar-2.png';
 
-// This component renders the account page for a client,
+// This component renders the account page for a Employee,
 // allowing them to view and edit their personal information and settings.
 
 function AccountPage() {
@@ -12,10 +12,10 @@ function AccountPage() {
     <div className="account-page">
       <aside className="account-sidebar">
         <div className="account-avatar-wrapper">
-          <img src={avatar} alt="Client Avatar" className="avatar" />
+          <img src={avatar} alt="Employee Avatar" className="avatar" />
           <button className="change-avatar-button">📷</button>
-          <h3 className="client-name">Name Surname</h3>
-          <p className="client-id">Client 0001</p>
+          <h3 className="employee-name">Name Surname</h3>
+          <p className="employee-id">Employee 0001</p>
         </div>
 
         <div className="account-tabs">

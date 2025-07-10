@@ -1,4 +1,4 @@
-.client-sidebar {
+.employee-sidebar {
   width: 220px;
   max-height: fit-content;
   background-color: #6e4070;
@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   min-height: 100vh;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
 }

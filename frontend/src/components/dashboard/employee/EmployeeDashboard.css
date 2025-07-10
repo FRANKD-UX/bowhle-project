@@ -1,34 +1,35 @@
-.client-dashboard-wrapper {
+.employee-dashboard-wrapper {
   display: flex;
   min-height: 100vh;
   background-color: #f8f8f8;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Sidebar stays on the left */
-.client-dashboard-wrapper > .client-sidebar {
+.employee-dashboard-wrapper > .employee-sidebar {
   flex-shrink: 0;
 }
 
 /* Right-hand content next to sidebar */
-.client-dashboard-content {
+.employee-dashboard-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
 /* Header sits above the main section */
-.client-main {
+.employee-main {
   display: flex;
   padding: 2rem;
   gap: 2rem;
 }
 
 /* Project section fills the main space */
-.client-projects-section {
+.employee-projects-section {
   flex: 3;
 }
 
 /* Status sidebar on the right */
-.client-status-sidebar {
+.employee-status-sidebar {
   flex: 1;
 }
