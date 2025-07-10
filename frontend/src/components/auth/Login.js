@@ -2,29 +2,81 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import Loader from '../common/Loader';
+import API from '../../../utils/api';
+import jwt_decode from 'jwt-decode';
+import { GoogleLogin } from '@react-oauth/google';
 
-// This component handles user login for both clients and employees
-// It allows users to sign in with email and password, or via Google
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('client');
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  // 🔐 Normal login (email + password)
+  const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (userType === 'employee') {
-      navigate('/employee-dashboard');
-    } else {
-      navigate('/client-dashboard');
+
+    try {
+      const res = await API.post("auth/login/", { email, password });
+      const token = res.data.access;
+      localStorage.setItem("token", token);
+
+      const userRes = await API.get("auth/user/");
+      const user = userRes.data;
+      localStorage.setItem("user", JSON.stringify(user));
+
+      if (user.role === 'client') {
+        navigate('/client-dashboard');
+      } else if (user.role === 'employee') {
+        navigate('/employee-dashboard');
+      } else {
+        alert("Unknown user role.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Login failed. Check credentials or verify email.");
+    } finally {
+      setLoading(false);
     }
   };
 
-  if (loading) {
-    return <Loader />;
-  }
+  // 🔐 Google Login logic
+  const handleGoogleLogin = async (credentialResponse) => {
+    setLoading(true);
+    try {
+      const { credential } = credentialResponse;
+      const decoded = jwt_decode(credential);
+
+      const res = await API.post("auth/google/", {
+        email: decoded.email
+      });
+
+      const token = res.data.access;
+      localStorage.setItem("token", token);
+
+      const userRes = await API.get("auth/user/");
+      const user = userRes.data;
+      localStorage.setItem("user", JSON.stringify(user));
+
+      if (user.role === 'client') {
+        navigate('/client-dashboard');
+      } else if (user.role === 'employee') {
+        navigate('/employee-dashboard');
+      } else {
+        alert("Unknown role from Google login");
+      }
+    } catch (err) {
+      console.error("Google login failed", err);
+      alert("Google Sign-In failed.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) return <Loader />;
 
   return (
     <div className="login-wrapper">
@@ -37,18 +89,16 @@ function Login() {
           <li>View your projects</li>
         </ul>
       </div>
-      
+
       <div className="login-right">
         <form className="login-form" onSubmit={handleLogin}>
           <h2>Sign In</h2>
 
-          <button type="button" className="google-signin-button">
-            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" 
-            alt="Google Logo"
-            className='google-icon'
-            />
-            Sign in with Google
-            </button>
+          {/* 🔐 Google Sign-In Button */}
+          <GoogleLogin
+            onSuccess={handleGoogleLogin}
+            onError={() => alert("Google Sign In Failed")}
+          />
 
           <input
             type="email"
@@ -61,6 +111,8 @@ function Login() {
           <input
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
 
@@ -71,7 +123,9 @@ function Login() {
 
           <button type="submit">Login</button>
 
-          <p className="signup-hint">Need an account? <span onClick={() => navigate('/signup')}>Signup</span></p>
+          <p className="signup-hint">
+            Need an account? <span onClick={() => navigate('/signup')}>Signup</span>
+          </p>
         </form>
       </div>
     </div>
