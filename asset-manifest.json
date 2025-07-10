@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/bowhle-project/static/css/main.315fe6a2.css",
-    "main.js": "/bowhle-project/static/js/main.d45fe2c2.js",
+    "main.css": "/bowhle-project/static/css/main.d8da1b1a.css",
+    "main.js": "/bowhle-project/static/js/main.07667edf.js",
     "static/js/453.670e15c7.chunk.js": "/bowhle-project/static/js/453.670e15c7.chunk.js",
     "static/media/Bowhle-homepage-video.mp4": "/bowhle-project/static/media/Bowhle-homepage-video.0d4564a8df75d3f8d5cf.mp4",
     "static/media/portfolioplaceholder.png": "/bowhle-project/static/media/portfolioplaceholder.addbc2508471927b0d86.png",
     "static/media/Copywriting.png": "/bowhle-project/static/media/Copywriting.72af1e2456da348653da.png",
+    "static/media/ServicesBanner.jpg": "/bowhle-project/static/media/ServicesBanner.5ced3aca58b5ea65b301.jpg",
     "static/media/Wireframing.png": "/bowhle-project/static/media/Wireframing.d8800dbd2a5431fc8c67.png",
     "static/media/Design.png": "/bowhle-project/static/media/Design.5d32d7f0375ad8327a3d.png",
     "static/media/brand12.jpg": "/bowhle-project/static/media/brand12.af56deee4d5accceaaf1.jpg",
@@ -19,6 +20,7 @@
     "static/media/EmailNewsletter.png": "/bowhle-project/static/media/EmailNewsletter.21e0f775736c3814944f.png",
     "static/media/brand6.jpg": "/bowhle-project/static/media/brand6.94da791bc384c9e7f412.jpg",
     "static/media/brand4.jpg": "/bowhle-project/static/media/brand4.30f505fb64657117bdb5.jpg",
+    "static/media/AboutBanner.jpg": "/bowhle-project/static/media/AboutBanner.ec83cdcb999401fa19b5.jpg",
     "static/media/brand8.jpg": "/bowhle-project/static/media/brand8.fd7940d059afc2002abf.jpg",
     "static/media/WebDevelopment.png": "/bowhle-project/static/media/WebDevelopment.dcc1972b9c6122afedfa.png",
     "static/media/brand3.jpg": "/bowhle-project/static/media/brand3.0342d7484e488b0c79a1.jpg",
@@ -34,7 +36,7 @@
     "static/media/Avatar-1.png": "/bowhle-project/static/media/Avatar-1.dffd09ab04443cf1e3eb.png",
     "static/media/Project1.png": "/bowhle-project/static/media/Project1.616d113ba84c51810b4f.png",
     "static/media/fa-brands-400.woff2": "/bowhle-project/static/media/fa-brands-400.c210719e60948b211a12.woff2",
-    "static/media/AboutBanner.jpg": "/bowhle-project/static/media/AboutBanner.18dd9fd5e0b3c0609d78.jpg",
+    "static/media/AboutBanner2.jpg": "/bowhle-project/static/media/AboutBanner2.18dd9fd5e0b3c0609d78.jpg",
     "static/media/fa-regular-400.ttf": "/bowhle-project/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
     "static/media/fa-regular-400.woff2": "/bowhle-project/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
     "static/media/Bowhle-WHITE.png": "/bowhle-project/static/media/Bowhle-WHITE.eb87da485921957cf1ce.png",
@@ -42,12 +44,12 @@
     "static/media/fa-v4compatibility.woff2": "/bowhle-project/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/bowhle-project/index.html",
     "static/media/star.svg": "/bowhle-project/static/media/star.849729bcf681862f18d21c21f61b16b1.svg",
-    "main.315fe6a2.css.map": "/bowhle-project/static/css/main.315fe6a2.css.map",
-    "main.d45fe2c2.js.map": "/bowhle-project/static/js/main.d45fe2c2.js.map",
+    "main.d8da1b1a.css.map": "/bowhle-project/static/css/main.d8da1b1a.css.map",
+    "main.07667edf.js.map": "/bowhle-project/static/js/main.07667edf.js.map",
     "453.670e15c7.chunk.js.map": "/bowhle-project/static/js/453.670e15c7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.315fe6a2.css",
-    "static/js/main.d45fe2c2.js"
+    "static/css/main.d8da1b1a.css",
+    "static/js/main.07667edf.js"
   ]
 }
