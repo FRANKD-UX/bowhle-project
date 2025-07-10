@@ -1,0 +1,48 @@
+.status-box {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  width: 260px;
+}
+
+.status-box .box__line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.5rem;
+}
+
+.status-box .box__line h5 {
+  font-weight: 600;
+  margin: 0;
+  color: #1b2327;
+}
+
+.status-box .box__line a {
+  color: #6e4070;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.status-box .published {
+  background-color: #22c064;
+  color: rgb(0, 0, 0);
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  border-radius: 20px;
+}
+
+.status-box .button {
+  width: 100%;
+  background-color: #1b2327;
+  color: rgb(255, 255, 255);
+  padding: 10px 0;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 20px;
+}

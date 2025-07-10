@@ -14,7 +14,7 @@ function Login() {
   const [userType, setUserType] = useState('client');
   const [loading, setLoading] = useState(false);
 
-  // 🔐 Normal login (email + password)
+  // Normal login (email + password)
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);

@@ -1,0 +1,149 @@
+.account-page {
+  display: flex;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fdfdfd;
+}
+
+/* Sidebar */
+.account-sidebar {
+  width: 280px;
+  background-color: #fafafa;
+  border-radius: 2rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.account-avatar-wrapper {
+  text-align: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.account-avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid white;
+}
+
+.change-avatar-button {
+  position: absolute;
+  bottom: 0;
+  right: 20%;
+  transform: translateX(50%);
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.client-name {
+  margin: 1rem 0 0.25rem;
+  font-weight: 600;
+}
+
+.client-id {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Tabs */
+.account-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.account-tab {
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.account-tab i {
+  color: #7f2cdd;
+}
+
+.account-tab.active {
+  background-color: #b6e5e6;
+  font-weight: 600;
+}
+
+/* Content */
+.account-content {
+  flex: 1;
+  margin-left: 2rem;
+  background-color: #fcfbfb;
+  padding: 2rem;
+  border-radius: 2rem;
+}
+
+.account-content h2 {
+  margin-bottom: 2rem;
+}
+
+/* Forms */
+.info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #ecebeb;
+  font-size: 0.95rem;
+}
+
+.form-group .full-width {
+  flex: 2;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-outline {
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #00a5b5;
+  border-radius: 2rem;
+  background: transparent;
+  color: #00a5b5;
+  cursor: pointer;
+}
+
+.btn-filled {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: #008fa2;
+  color: white;
+  cursor: pointer;
+}
