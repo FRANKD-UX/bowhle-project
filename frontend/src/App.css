@@ -1,0 +1,182 @@
+:root {
+  /* global variables are always a great start */
+  --main-font: montserrat;
+  --main-text-color: #323030;
+  --button-background-color: #7f2cdd;
+  --button-text-color: #ffffff;
+  --button-hover-background-color: #00838f;
+  --button-hover-text-color: #ffffff;
+  --button-border-radius: 50px;
+  --button-padding: 5px 20px;
+}
+
+/* Flex layout for footer positioning */
+html, body, #root {
+  margin-left: 0px;
+  padding-top: 0;
+  height: 100%;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.background-video,
+.background-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  background: none;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #ffffff00;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.content {
+  color: #ffffff;
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  position: relative;
+  padding: 10rem;
+  transform: none;
+  z-index: 1;
+  padding: 5rem 2rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: var(--main-border-radius);
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  font-size: 16px;
+  font-weight: light;
+  cursor: pointer;
+  border: none;
+  margin-top: 1rem;
+}
+
+.button.light {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  text-decoration: none;
+  border-radius: var(--button-border-radius);
+  max-width: fit-content;
+}
+
+.button.light:hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* Layout for different screen sizes */
+
+/* For small screens (mobile devices) */
+@media (max-width: 768px) {
+.hero-container,
+.background-video,
+.background-video video {
+  max-width: 100%;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 1.5rem 1rem;
+  }
+
+.content {
+  padding: 3rem 1rem;
+  font-size: 1.8rem;
+  }
+}
+
+/* For medium screens (tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+.hero-Container {
+  min-height: 80vh;
+  padding: 40px;
+  align-items: center;
+  }
+}
+
+/* For large screens (desktops) */
+@media (min-width: 1025px) {
+.hero-Container {
+  min-height: 100vh;
+  padding: 0;
+  align-items: center;
+  }
+}
+
+.fancy-heading {
+  color: #ffffff;
+  font-family: var(--main-font), sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.fancy-heading span {
+  display: inline-block;
+  animation: fadeIn 2s alternate infinite;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(10px);
+  }
+  50%, 100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}

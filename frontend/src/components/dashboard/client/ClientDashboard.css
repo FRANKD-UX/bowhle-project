@@ -1,0 +1,34 @@
+.client-dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+}
+
+/* Sidebar stays on the left */
+.client-dashboard-wrapper > .client-sidebar {
+  flex-shrink: 0;
+}
+
+/* Right-hand content next to sidebar */
+.client-dashboard-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header sits above the main section */
+.client-main {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+/* Project section fills the main space */
+.client-projects-section {
+  flex: 3;
+}
+
+/* Status sidebar on the right */
+.client-status-sidebar {
+  flex: 1;
+}

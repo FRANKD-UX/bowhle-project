@@ -1,0 +1,127 @@
+.brief-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.brief-modal {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 700px;
+  padding: 2rem;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.brief-form h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #3d253c;
+  font-weight: 600;
+}
+
+.brief-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #1b2327;
+}
+
+.brief-form input[type="text"],
+.brief-form input[type="file"],
+.brief-form select,
+.brief-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  background-color: #f7f7f7;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.brief-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.checkbox-group,
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-group label,
+.radio-group label {
+  font-weight: 400;
+  color: #333;
+}
+
+.submit-brief-btn {
+  margin-top: 2rem;
+  background-color: #7f2cdd;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-brief-btn:hover {
+  background-color: #641eb4;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.submitted-message {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #22c064;
+  padding: 2rem;
+}
+
+@media (max-width: 480px) {
+  .brief-modal {
+    padding: 1.25rem;
+  }
+
+  .brief-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .submit-brief-btn {
+    width: 100%;
+  }
+}

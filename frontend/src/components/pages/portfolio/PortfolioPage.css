@@ -1,0 +1,128 @@
+.portfolio-page {
+  font-family: 'Montserrat', sans-serif;
+  background: #fff;
+  color: #0e0e0e;
+  padding: 0;
+}
+
+.portfolio-header {
+  text-align: center;
+  padding: 12rem 2rem 2rem;
+}
+
+.portfolio-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Sections */
+.portfolio-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.7s ease-out;
+}
+
+.portfolio-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-text-layout {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+
+.section-heading h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.section-body p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.section-body em {
+  font-style: italic;
+  color: #666;
+}
+
+.section-body ul {
+  padding-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-body ul li {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-image-wrapper {
+  width: 100vw;
+  margin-left: calc(-1 * ((100vw - 100%) / 2));
+  overflow: hidden;
+}
+
+.portfolio-image-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  cursor: zoom-in;
+}
+
+.portfolio-image-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive tweaks */
+@media (min-width: 768px) {
+  .portfolio-text-layout {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .portfolio-text-layout h2 {
+    flex: 1;
+    text-align: left;
+  }
+
+  .portfolio-text-layout p {
+    flex: 3;
+  }
+
+  @media (max-width: 767px) {
+  .portfolio-header h1 {
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  .portfolio-text-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-heading h2 {
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  .section-body p,
+  .section-body ul,
+  .section-body ul li {
+    text-align: left;
+  }
+}
+}

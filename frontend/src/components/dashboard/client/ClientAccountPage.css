@@ -1,0 +1,212 @@
+.account-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 3rem 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fdfdfd;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.account-sidebar {
+  width: 300px;
+  background-color: #fafafa;
+  border-radius: 2rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.account-avatar-wrapper {
+  text-align: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.account-avatar-wrapper img.avatar,
+.account-avatar {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.change-avatar-button {
+  position: absolute;
+  bottom: 0;
+  right: 40%;
+  transform: translateX(50%);
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem;
+}
+
+.client-name {
+  margin: 1rem 0 0.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.client-id {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.account-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.account-tab {
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.account-tab i {
+  color: #7f2cdd;
+}
+
+.account-tab.active {
+  background-color: #b6e5e6;
+  font-weight: 600;
+}
+
+.account-content {
+  flex: 1;
+  max-width: 700px;
+  background-color: #fcfbfb;
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+}
+
+.account-content h2 {
+  margin-bottom: 2rem;
+}
+
+.info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #ecebeb;
+  font-size: 0.95rem;
+}
+
+.form-group .full-width {
+  flex: 2;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-outline {
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #00a5b5;
+  border-radius: 2rem;
+  background: transparent;
+  color: #00a5b5;
+  cursor: pointer;
+}
+
+.btn-filled {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: #008fa2;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .account-page {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+
+  .account-sidebar {
+    width: 100%;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: none;
+    align-items: center;
+  }
+
+  .account-avatar-wrapper img.avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .account-tabs {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .account-tab {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .account-content {
+    width: 100%;
+    padding: 1.5rem;
+    margin-left: 0;
+    border-radius: 1.5rem;
+    box-shadow: none;
+  }
+
+  .info-form {
+    gap: 1rem;
+  }
+
+  .form-group {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-buttons {
+    justify-content: center;
+  }
+}

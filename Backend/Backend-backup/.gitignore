@@ -1,0 +1,24 @@
+# Ignore environment variables
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Django
+*.log
+db.sqlite3
+staticfiles/
+media/
+
+# IDE / Editor specific
+.vscode/
+.idea/
+*.swp.env

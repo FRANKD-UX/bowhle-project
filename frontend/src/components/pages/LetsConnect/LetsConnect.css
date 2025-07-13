@@ -1,0 +1,68 @@
+.lets-connect {
+  padding: 4rem 2rem;
+  background: #fdfcfb;
+  font-family: var(--main-font);
+  color: var(--main-text-color);
+  display: flex;
+  justify-content: center;
+}
+
+.connect-wrapper {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.connect-heading {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: #6e4070;
+  padding-top: 6rem;
+}
+
+.connect-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.connect-form input,
+.connect-form textarea {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.connect-form textarea {
+  height: 150px;
+  resize: none;
+}
+
+.connect-form button {
+  padding: 0.75rem 1.5rem;
+  background: var(--button-background-color);
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.connect-form button:hover {
+  background: var(--button-hover-background-color);
+}
+
+.success-message {
+  background-color: #f0f0ff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+}
+
+.success-message h2 {
+  color: #7f2cdd;
+  margin-bottom: 1rem;
+}
