@@ -1,4 +1,3 @@
-# admin.py
 from django.contrib import admin
 from .models import DesignProject, DesignProgress, DesignFile, ProjectComment
 

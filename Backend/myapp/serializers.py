@@ -4,25 +4,19 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from .models import DesignProject, DesignProgress, DesignFile, ProjectComment, Note
 
+
 class UserRegistrationSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(queryset=User.objects.all())]
     )
-    password = serializers.CharField(
-        write_only=True,
-        required=True,
-        validators=[validate_password]
-    )
+    password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     password2 = serializers.CharField(write_only=True, required=True)
 
     class Meta:
         model = User
         fields = ('username', 'password', 'password2', 'email', 'first_name', 'last_name')
-        extra_kwargs = {
-            'first_name': {'required': True},
-            'last_name': {'required': True}
-        }
+        extra_kwargs = {'first_name': {'required': True}, 'last_name': {'required': True}}
 
     def validate(self, attrs):
         if attrs['password'] != attrs['password2']:
@@ -34,15 +28,18 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         return user
 
+
 class UserLoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
+
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'date_joined']
         read_only_fields = ['id', 'username', 'date_joined']
+
 
 class PasswordChangeSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True)
@@ -60,6 +57,7 @@ class PasswordChangeSerializer(serializers.Serializer):
             raise serializers.ValidationError("Old password is incorrect")
         return value
 
+
 class DesignProjectSerializer(serializers.ModelSerializer):
     client = UserProfileSerializer(read_only=True)
     designer = UserProfileSerializer(read_only=True)
@@ -70,6 +68,7 @@ class DesignProjectSerializer(serializers.ModelSerializer):
         model = DesignProject
         fields = '__all__'
         read_only_fields = ('created_at', 'updated_at', 'completed_at', 'client', 'designer')
+
 
 class DesignProgressSerializer(serializers.ModelSerializer):
     updated_by = UserProfileSerializer(read_only=True)
@@ -84,6 +83,7 @@ class DesignProgressSerializer(serializers.ModelSerializer):
         if value < 0 or value > 100:
             raise serializers.ValidationError("Progress must be between 0 and 100")
         return value
+
 
 class DesignFileSerializer(serializers.ModelSerializer):
     uploaded_by = UserProfileSerializer(read_only=True)
@@ -101,6 +101,7 @@ class DesignFileSerializer(serializers.ModelSerializer):
             return request.build_absolute_uri(obj.file.url)
         return None
 
+
 class ProjectCommentSerializer(serializers.ModelSerializer):
     author = UserProfileSerializer(read_only=True)
 
@@ -109,6 +110,7 @@ class ProjectCommentSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ('created_at', 'author')
 
+
 class NoteSerializer(serializers.ModelSerializer):
     author = UserProfileSerializer(read_only=True)
 
@@ -116,6 +118,7 @@ class NoteSerializer(serializers.ModelSerializer):
         model = Note
         fields = '__all__'
         read_only_fields = ('created_at', 'author')
+
 
 class TokenRefreshSerializer(serializers.Serializer):
     refresh = serializers.CharField()
