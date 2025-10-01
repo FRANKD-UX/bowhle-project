@@ -104,6 +104,8 @@ Frontend (React)
 └── Employee Dashboard
     ├── Upload files
     └── Submit links (e.g. WeTransfer)
+```
+---
 
 ## 🧑‍💻 Backend – Frank D
 
@@ -136,7 +138,7 @@ python manage.py runserver
 
 ---
 
-## 💻 Frontend (React)/ Backend (Django) intergration 
+## 💻 Frontend (React)/ Backend (Django) integration 
 
 ### Features:
 - 🔐 Auth (JWT + Google SSO)
